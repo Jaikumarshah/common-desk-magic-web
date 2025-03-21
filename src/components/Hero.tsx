@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Leaf, Wifi, Clock } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
+import BookingDialog from "./BookingDialog";
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -57,9 +58,13 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-12">
-              <Button className="bg-commonBlue hover:bg-commonBlue/90 text-white px-6 py-6 rounded-lg w-full sm:w-auto">
-                Book a Tour
-              </Button>
+              <BookingDialog 
+                trigger={
+                  <Button className="bg-commonBlue hover:bg-commonBlue/90 text-white px-6 py-6 rounded-lg w-full sm:w-auto">
+                    Book a Tour
+                  </Button>
+                }
+              />
               <a 
                 href="#pricing" 
                 className="flex items-center gap-2 text-commonGrey hover:text-commonBlue transition-colors duration-300 font-medium group"
@@ -92,7 +97,7 @@ const Hero = () => {
             <div className="relative rounded-2xl overflow-hidden shadow-medium min-h-[400px] lg:min-h-[500px]">
               <div className="absolute inset-0 bg-gradient-to-tr from-commonBlue/20 to-transparent z-10"></div>
               <img 
-                src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                src="/lovable-uploads/99cff59c-a27c-43f9-853a-a0d4bf8ebda2.jpg" 
                 alt="Common Desk Coworking Space" 
                 className={`w-full h-full object-cover object-center transition-all duration-1000 ease-out ${
                   isLoaded ? "scale-100 blur-0" : "scale-110 blur-md"

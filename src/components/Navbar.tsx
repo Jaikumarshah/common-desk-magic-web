@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { MenuIcon, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import BookingDialog from "./BookingDialog";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,6 +45,7 @@ const Navbar = () => {
     { label: "Features", href: "#features" },
     { label: "Pricing", href: "#pricing" },
     { label: "Location", href: "#location" },
+    { label: "Reviews", href: "#reviews" },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -77,9 +79,13 @@ const Navbar = () => {
                 {item.label}
               </a>
             ))}
-            <Button className="bg-commonBlue hover:bg-commonBlue/90 text-white">
-              Book a Tour
-            </Button>
+            <BookingDialog 
+              trigger={
+                <Button className="bg-commonBlue hover:bg-commonBlue/90 text-white">
+                  Book a Tour
+                </Button>
+              }
+            />
           </nav>
 
           {/* Mobile menu button */}
@@ -116,12 +122,16 @@ const Navbar = () => {
                 {item.label}
               </a>
             ))}
-            <Button 
-              className="bg-commonBlue hover:bg-commonBlue/90 text-white mt-4" 
-              onClick={() => setIsOpen(false)}
-            >
-              Book a Tour
-            </Button>
+            <BookingDialog 
+              trigger={
+                <Button 
+                  className="bg-commonBlue hover:bg-commonBlue/90 text-white mt-4" 
+                  onClick={() => setIsOpen(false)}
+                >
+                  Book a Tour
+                </Button>
+              }
+            />
           </nav>
         </div>
       </div>

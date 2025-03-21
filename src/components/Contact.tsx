@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Calendar, Mail, MessageSquare, Send } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import { toast } from "sonner";
+import BookingDialog from "./BookingDialog";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -74,8 +75,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="text-base font-medium text-commonGrey">Email Us</h4>
-                    <a href="mailto:info@commondesk.in" className="text-commonBlue hover:underline">
-                      info@commondesk.in
+                    <a href="mailto:nudge@commondesk.in" className="text-commonBlue hover:underline">
+                      nudge@commondesk.in
                     </a>
                   </div>
                 </div>
@@ -86,8 +87,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="text-base font-medium text-commonGrey">Call Us</h4>
-                    <a href="tel:+919876543210" className="text-commonBlue hover:underline">
-                      +91 98765 43210
+                    <a href="tel:+919986888639" className="text-commonBlue hover:underline">
+                      +91 99868 88639
                     </a>
                   </div>
                 </div>
@@ -98,9 +99,19 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="text-base font-medium text-commonGrey">Book a Tour</h4>
-                    <p className="text-commonGrey/80">
+                    <p className="text-commonGrey/80 mb-2">
                       Schedule a visit to experience our workspace firsthand
                     </p>
+                    <BookingDialog 
+                      trigger={
+                        <Button 
+                          variant="outline" 
+                          className="text-commonBlue border-commonBlue/20 hover:bg-commonBlue/10"
+                        >
+                          Schedule Now
+                        </Button>
+                      }
+                    />
                   </div>
                 </div>
               </div>
@@ -183,7 +194,7 @@ const Contact = () => {
                   <Input
                     id="phone"
                     name="phone"
-                    placeholder="+91 98765 43210"
+                    placeholder="+91 99868 88639"
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"

@@ -2,6 +2,7 @@
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AnimatedSection from "./AnimatedSection";
+import BookingDialog from "./BookingDialog";
 
 const Pricing = () => {
   const pricingPlans = [
@@ -130,17 +131,21 @@ const Pricing = () => {
                   ))}
                 </ul>
                 
-                <Button 
-                  className={`w-full ${
-                    plan.popular 
-                      ? "bg-commonBlue hover:bg-commonBlue/90" 
-                      : plan.color === "commonGreen" 
-                        ? "bg-commonGreen hover:bg-commonGreen/90"
-                        : "bg-commonGrey hover:bg-commonGrey/90"
-                  } text-white py-6`}
-                >
-                  Get Started
-                </Button>
+                <BookingDialog 
+                  trigger={
+                    <Button 
+                      className={`w-full ${
+                        plan.popular 
+                          ? "bg-commonBlue hover:bg-commonBlue/90" 
+                          : plan.color === "commonGreen" 
+                            ? "bg-commonGreen hover:bg-commonGreen/90"
+                            : "bg-commonGrey hover:bg-commonGrey/90"
+                      } text-white py-6`}
+                    >
+                      Get Started
+                    </Button>
+                  }
+                />
               </div>
             </AnimatedSection>
           ))}

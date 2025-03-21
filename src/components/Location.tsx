@@ -30,10 +30,10 @@ const Location = () => {
                 <div>
                   <h3 className="text-xl font-medium mb-2">Our Address</h3>
                   <p className="text-commonGrey/80">
-                    Common Desk, Indiranagar, Bangalore, Karnataka, India
+                    Common Desk, 2nd Floor, No. 826, 100 Feet Road, HAL 2nd Stage, Indiranagar, Bengaluru, Karnataka 560038
                   </p>
                   <a 
-                    href="https://g.co/kgs/xUkvZrS" 
+                    href="https://maps.app.goo.gl/LVFz9kj59pLcu4hv7" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-commonBlue hover:underline mt-2 inline-block"
@@ -74,7 +74,7 @@ const Location = () => {
                 <div>
                   <h3 className="text-xl font-medium mb-2">Contact</h3>
                   <p className="text-commonGrey/80">
-                    Have questions? Reach out to us at info@commondesk.in or call us at +91 98765 43210.
+                    Have questions? Reach out to us at nudge@commondesk.in or call us at +91 99868 88639.
                   </p>
                 </div>
               </div>
@@ -84,7 +84,7 @@ const Location = () => {
           <AnimatedSection animation="fade-in-right">
             <div className="aspect-video rounded-xl overflow-hidden shadow-medium">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.9842599264296!2d77.63588091527353!3d12.970070418385705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae16976473d551%3A0xd360ef4a45d8b49d!2sIndiranagar!5e0!3m2!1sen!2sin!4v1684920121567!5m2!1sen!2sin" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.942129341869!2d77.63841397486085!3d12.971869587363053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17d9f55dd55f%3A0x8af901c1d4fc2e8b!2sCommon%20Desk!5e0!3m2!1sen!2sin!4v1718537012081!5m2!1sen!2sin" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
