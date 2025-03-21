@@ -3,39 +3,35 @@ import { Star } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 
 const Reviews = () => {
-  // Reviews data with updated avatar images for Indian reviewers
+  // Reviews data without avatar images
   const reviews = [
     {
       id: 1,
       name: "Rahul Sharma",
       rating: 5,
       comment: "Absolutely love working from Common Desk! The ambiance next to the park makes it special, and the high-speed internet is perfect for my video calls.",
-      date: "2 months ago",
-      avatar: "/lovable-uploads/7edfe393-21ad-4c99-aa01-6ce9c8562b88.png" // Updated with Indian face
+      date: "2 months ago"
     },
     {
       id: 2,
       name: "Priya Patel",
       rating: 5,
       comment: "Best co-working space in Indiranagar! The green terrace is my favorite spot for lunch breaks. Staff is friendly and facilities are always well-maintained.",
-      date: "1 month ago",
-      avatar: "https://randomuser.me/api/portraits/women/10.jpg" // Updated with Indian face
+      date: "1 month ago"
     },
     {
       id: 3,
       name: "Vikram Mehta",
       rating: 4,
       comment: "Great location right next to the metro station. The environment is perfect for focused work, and I love the community events. Would highly recommend!",
-      date: "3 weeks ago",
-      avatar: "https://randomuser.me/api/portraits/men/76.jpg"
+      date: "3 weeks ago"
     },
     {
       id: 4,
       name: "Ananya Desai",
       rating: 5,
       comment: "Common Desk has transformed my remote work experience. The ambiance is perfect, and the pricing is reasonable compared to other spaces in the area.",
-      date: "2 weeks ago",
-      avatar: "https://randomuser.me/api/portraits/women/63.jpg" // Updated with Indian face
+      date: "2 weeks ago"
     }
   ];
 
@@ -84,22 +80,11 @@ const Reviews = () => {
               delay={index * 150}
             >
               <div className="glass-card p-6 rounded-xl shadow-medium h-full">
-                <div className="flex items-center mb-4">
-                  <div className="mr-4">
-                    <div className="w-12 h-12 rounded-full overflow-hidden">
-                      <img 
-                        src={review.avatar} 
-                        alt={review.name} 
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-medium text-commonGrey">{review.name}</h3>
-                    <div className="flex items-center mt-1">
-                      {renderStars(review.rating)}
-                      <span className="ml-2 text-xs text-commonGrey/60">{review.date}</span>
-                    </div>
+                <div className="mb-4">
+                  <h3 className="text-lg font-medium text-commonGrey">{review.name}</h3>
+                  <div className="flex items-center mt-1">
+                    {renderStars(review.rating)}
+                    <span className="ml-2 text-xs text-commonGrey/60">{review.date}</span>
                   </div>
                 </div>
                 <p className="text-commonGrey/80 italic">{review.comment}</p>
