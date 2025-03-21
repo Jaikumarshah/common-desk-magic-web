@@ -1,3 +1,4 @@
+
 import { ArrowUp } from "lucide-react";
 
 const Footer = () => {
@@ -25,7 +26,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12">
           <div className="col-span-1 md:col-span-1 lg:col-span-1">
             <img 
-              src="/lovable-uploads/2f1b2ee4-c99b-4fa3-b5bf-d00ed8fdfe6f.png" 
+              src="/lovable-uploads/44d21ec1-4526-40b7-843c-f5eb34817c9f.png" 
               alt="Common Desk Logo" 
               className="h-12 mb-6"
             />
@@ -89,6 +90,11 @@ const Footer = () => {
               <li>
                 <a href="#contact" className="text-commonGrey/80 hover:text-commonBlue transition-colors">
                   Contact
+                </a>
+              </li>
+              <li>
+                <a href="/gallery" className="text-commonGrey/80 hover:text-commonBlue transition-colors">
+                  Gallery
                 </a>
               </li>
             </ul>
