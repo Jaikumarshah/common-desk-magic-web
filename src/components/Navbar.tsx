@@ -62,7 +62,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <a href="#home" className="z-50">
             <img 
-              src="/lovable-uploads/ce474273-dc30-4902-985a-139ea40ee54d.png" 
+              src="/lovable-uploads/2f1b2ee4-c99b-4fa3-b5bf-d00ed8fdfe6f.png" 
               alt="Common Desk Logo" 
               className="h-10 md:h-12"
             />

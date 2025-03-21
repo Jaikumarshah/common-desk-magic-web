@@ -97,7 +97,7 @@ const Hero = () => {
             <div className="relative rounded-2xl overflow-hidden shadow-medium min-h-[400px] lg:min-h-[500px]">
               <div className="absolute inset-0 bg-gradient-to-tr from-commonBlue/20 to-transparent z-10"></div>
               <img 
-                src="/lovable-uploads/ce474273-dc30-4902-985a-139ea40ee54d.png" 
+                src="https://images.unsplash.com/photo-1600508773201-5b5a1a3802e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" 
                 alt="Common Desk Coworking Space" 
                 className={`w-full h-full object-cover object-center transition-all duration-1000 ease-out ${
                   isLoaded ? "scale-100 blur-0" : "scale-110 blur-md"

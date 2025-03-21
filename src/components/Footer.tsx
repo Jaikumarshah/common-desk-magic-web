@@ -1,4 +1,3 @@
-
 import { ArrowUp } from "lucide-react";
 
 const Footer = () => {
@@ -26,7 +25,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12">
           <div className="col-span-1 md:col-span-1 lg:col-span-1">
             <img 
-              src="/lovable-uploads/705e61bb-e7ba-4309-8159-bbb3e2405bf0.png" 
+              src="/lovable-uploads/2f1b2ee4-c99b-4fa3-b5bf-d00ed8fdfe6f.png" 
               alt="Common Desk Logo" 
               className="h-12 mb-6"
             />
