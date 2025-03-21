@@ -11,7 +11,7 @@ const Reviews = () => {
       rating: 5,
       comment: "Absolutely love working from Common Desk! The ambiance next to the park makes it special, and the high-speed internet is perfect for my video calls.",
       date: "2 months ago",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150&q=80"
+      avatar: "https://randomuser.me/api/portraits/men/41.jpg"
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ const Reviews = () => {
       rating: 5,
       comment: "Best co-working space in Indiranagar! The green terrace is my favorite spot for lunch breaks. Staff is friendly and facilities are always well-maintained.",
       date: "1 month ago",
-      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150&q=80"
+      avatar: "https://randomuser.me/api/portraits/women/79.jpg"
     },
     {
       id: 3,
@@ -27,7 +27,7 @@ const Reviews = () => {
       rating: 4,
       comment: "Great location right next to the metro station. The environment is perfect for focused work, and I love the community events. Would highly recommend!",
       date: "3 weeks ago",
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150&q=80"
+      avatar: "https://randomuser.me/api/portraits/men/76.jpg"
     },
     {
       id: 4,
@@ -35,7 +35,7 @@ const Reviews = () => {
       rating: 5,
       comment: "Common Desk has transformed my remote work experience. The ambiance is perfect, and the pricing is reasonable compared to other spaces in the area.",
       date: "2 weeks ago",
-      avatar: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150&q=80"
+      avatar: "https://randomuser.me/api/portraits/women/51.jpg"
     }
   ];
 
