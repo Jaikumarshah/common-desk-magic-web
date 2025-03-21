@@ -19,7 +19,7 @@ const Hero = () => {
   const heroFeatures = [
     {
       icon: <Leaf className="w-5 h-5 text-commonGreen" />,
-      text: "Park & Green Terrace",
+      text: "Green Workspace",
     },
     {
       icon: <Wifi className="w-5 h-5 text-commonBlue" />,
@@ -94,15 +94,44 @@ const Hero = () => {
             delay={300}
             className="relative"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-medium min-h-[400px] lg:min-h-[500px]">
-              <div className="absolute inset-0 bg-gradient-to-tr from-commonBlue/20 to-transparent z-10"></div>
-              <img 
-                src="https://images.unsplash.com/photo-1600508773201-5b5a1a3802e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" 
-                alt="Common Desk Coworking Space" 
-                className={`w-full h-full object-cover object-center transition-all duration-1000 ease-out ${
-                  isLoaded ? "scale-100 blur-0" : "scale-110 blur-md"
-                }`}
-              />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="rounded-2xl overflow-hidden shadow-medium h-80">
+                <div className="absolute inset-0 bg-gradient-to-tr from-commonBlue/20 to-transparent z-10"></div>
+                <img 
+                  src="/lovable-uploads/87854a8e-64d2-420d-954b-2bd973ac2b60.png" 
+                  alt="Common Desk Coworking Space" 
+                  className={`w-full h-full object-cover object-center transition-all duration-1000 ease-out ${
+                    isLoaded ? "scale-100 blur-0" : "scale-110 blur-md"
+                  }`}
+                />
+              </div>
+              <div className="rounded-2xl overflow-hidden shadow-medium h-80">
+                <img 
+                  src="/lovable-uploads/09dfac7e-c70c-4a63-83a5-1e3c50abb43d.png" 
+                  alt="Common Desk Lounge Area" 
+                  className={`w-full h-full object-cover object-center transition-all duration-1000 ease-out ${
+                    isLoaded ? "scale-100 blur-0" : "scale-110 blur-md"
+                  }`}
+                />
+              </div>
+              <div className="rounded-2xl overflow-hidden shadow-medium h-80">
+                <img 
+                  src="/lovable-uploads/a472980f-2334-467a-be19-710558370b49.png" 
+                  alt="Common Desk Work Area" 
+                  className={`w-full h-full object-cover object-center transition-all duration-1000 ease-out ${
+                    isLoaded ? "scale-100 blur-0" : "scale-110 blur-md"
+                  }`}
+                />
+              </div>
+              <div className="rounded-2xl overflow-hidden shadow-medium h-80">
+                <img 
+                  src="/lovable-uploads/8c2f356c-96d1-4fc1-9347-220c65ccb2b7.png" 
+                  alt="Common Desk Conference Room" 
+                  className={`w-full h-full object-cover object-center transition-all duration-1000 ease-out ${
+                    isLoaded ? "scale-100 blur-0" : "scale-110 blur-md"
+                  }`}
+                />
+              </div>
             </div>
             
             {/* Decorative elements */}
