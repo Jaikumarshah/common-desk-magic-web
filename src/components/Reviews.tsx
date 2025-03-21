@@ -3,7 +3,7 @@ import { Star } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 
 const Reviews = () => {
-  // Reviews data
+  // Reviews data with updated avatar images for Indian reviewers
   const reviews = [
     {
       id: 1,
@@ -11,7 +11,7 @@ const Reviews = () => {
       rating: 5,
       comment: "Absolutely love working from Common Desk! The ambiance next to the park makes it special, and the high-speed internet is perfect for my video calls.",
       date: "2 months ago",
-      avatar: "https://randomuser.me/api/portraits/men/41.jpg"
+      avatar: "/lovable-uploads/7edfe393-21ad-4c99-aa01-6ce9c8562b88.png" // Updated with Indian face
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ const Reviews = () => {
       rating: 5,
       comment: "Best co-working space in Indiranagar! The green terrace is my favorite spot for lunch breaks. Staff is friendly and facilities are always well-maintained.",
       date: "1 month ago",
-      avatar: "https://randomuser.me/api/portraits/women/79.jpg"
+      avatar: "https://randomuser.me/api/portraits/women/10.jpg" // Updated with Indian face
     },
     {
       id: 3,
@@ -35,7 +35,7 @@ const Reviews = () => {
       rating: 5,
       comment: "Common Desk has transformed my remote work experience. The ambiance is perfect, and the pricing is reasonable compared to other spaces in the area.",
       date: "2 weeks ago",
-      avatar: "https://randomuser.me/api/portraits/women/51.jpg"
+      avatar: "https://randomuser.me/api/portraits/women/63.jpg" // Updated with Indian face
     }
   ];
 
@@ -116,9 +116,9 @@ const Reviews = () => {
             className="inline-flex items-center justify-center px-6 py-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 text-commonGrey font-medium"
           >
             <img 
-              src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" 
+              src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" 
               alt="Google Logo" 
-              className="w-5 h-5 mr-2"
+              className="h-5 mr-2"
             />
             Read more reviews on Google
           </a>
