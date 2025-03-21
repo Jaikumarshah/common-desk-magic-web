@@ -141,8 +141,8 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Updated Scroll indicator - now centered below the content with higher z-index */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce z-20">
+      {/* Updated Scroll indicator - adjusted position */}
+      <div className="absolute bottom-8 left-[45%] transform -translate-x-1/2 flex flex-col items-center animate-bounce z-20">
         <span className="text-sm text-commonGrey mb-2 font-medium">Scroll Down</span>
         <div className="w-6 h-10 border-2 border-commonGrey/60 rounded-full flex justify-center pt-2 bg-white/50 backdrop-blur-sm">
           <div className="w-1.5 h-1.5 bg-commonBlue rounded-full animate-float"></div>

@@ -1,13 +1,15 @@
 
 import { useState, useEffect } from "react";
-import { MenuIcon, X } from "lucide-react";
+import { MenuIcon, X, Image } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import BookingDialog from "./BookingDialog";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -40,13 +42,20 @@ const Navbar = () => {
     };
   }, [isOpen]);
 
+  // Updated navItems with Gallery link
   const navItems = [
-    { label: "Home", href: "#home" },
-    { label: "Features", href: "#features" },
-    { label: "Pricing", href: "#pricing" },
-    { label: "Location", href: "#location" },
-    { label: "Reviews", href: "#reviews" },
-    { label: "Contact", href: "#contact" },
+    { label: "Home", href: location.pathname === "/" ? "#home" : "/" },
+    { label: "Features", href: location.pathname === "/" ? "#features" : "/#features" },
+    { label: "Pricing", href: location.pathname === "/" ? "#pricing" : "/#pricing" },
+    { label: "Location", href: location.pathname === "/" ? "#location" : "/#location" },
+    { label: "Reviews", href: location.pathname === "/" ? "#reviews" : "/#reviews" },
+    { label: "Contact", href: location.pathname === "/" ? "#contact" : "/#contact" },
+    { 
+      label: "Gallery", 
+      href: "/gallery", 
+      icon: <Image className="h-4 w-4 mr-1" />,
+      isExternal: true 
+    },
   ];
 
   return (
@@ -60,24 +69,38 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
-          <a href="#home" className="z-50">
+          <Link to="/" className="z-50">
             <img 
               src="/lovable-uploads/2f1b2ee4-c99b-4fa3-b5bf-d00ed8fdfe6f.png" 
               alt="Common Desk Logo" 
               className="h-10 md:h-12"
             />
-          </a>
+          </Link>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-commonGrey hover:text-commonBlue font-medium text-sm transition-colors duration-300"
-              >
-                {item.label}
-              </a>
+              item.isExternal ? (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  className={cn(
+                    "flex items-center text-commonGrey hover:text-commonBlue font-medium text-sm transition-colors duration-300",
+                    location.pathname === item.href && "text-commonBlue"
+                  )}
+                >
+                  {item.icon && item.icon}
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="text-commonGrey hover:text-commonBlue font-medium text-sm transition-colors duration-300"
+                >
+                  {item.label}
+                </a>
+              )
             ))}
             <BookingDialog 
               trigger={
@@ -113,14 +136,26 @@ const Navbar = () => {
         <div className="flex flex-col h-full justify-center items-center">
           <nav className="flex flex-col space-y-8 items-center">
             {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-commonGrey hover:text-commonBlue font-medium text-lg transition-colors duration-300"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.label}
-              </a>
+              item.isExternal ? (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  className="flex items-center text-commonGrey hover:text-commonBlue font-medium text-lg transition-colors duration-300"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.icon && item.icon}
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="text-commonGrey hover:text-commonBlue font-medium text-lg transition-colors duration-300"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </a>
+              )
             ))}
             <BookingDialog 
               trigger={
