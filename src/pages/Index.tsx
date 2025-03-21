@@ -9,6 +9,17 @@ import Contact from "@/components/Contact";
 import { useEffect } from "react";
 
 const Index = () => {
+  // Update page title and metadata
+  useEffect(() => {
+    document.title = "Common Desk - Coworking Space in Bangalore";
+    
+    // Set meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute("content", "Common Desk offers modern coworking spaces in Bangalore with high-speed internet, meeting rooms, and a vibrant community.");
+    }
+  }, []);
+
   // Preload images for better user experience
   useEffect(() => {
     const imagesToPreload = [
