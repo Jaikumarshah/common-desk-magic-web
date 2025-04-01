@@ -73,8 +73,7 @@ const BookingDialog = ({ trigger, className }: BookingDialogProps) => {
     setIsSubmitting(true);
     
     try {
-      // Send data using Email JS or similar service
-      // This is using a direct API endpoint example
+      // Send data using FormSubmit.co service
       const response = await fetch('https://formsubmit.co/ajax/ca.jai22@gmail.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
