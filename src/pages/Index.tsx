@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
@@ -14,11 +13,9 @@ import { Link } from "react-router-dom";
 import AnimatedSection from "@/components/AnimatedSection";
 
 const Index = () => {
-  // Update page title and metadata
   useEffect(() => {
     document.title = "Common Desk – Premier Coworking Space in Bengaluru";
     
-    // Set meta description
     let metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute("content", "Discover Common Desk, Bengaluru's leading coworking space offering professional, calm, and collaborative environments with high-speed internet, modern amenities, and complimentary beverages.");
@@ -30,7 +27,6 @@ const Index = () => {
     }
   }, []);
 
-  // Preload images for better user experience
   useEffect(() => {
     const imagesToPreload = [
       "/lovable-uploads/87854a8e-64d2-420d-954b-2bd973ac2b60.png",
@@ -106,11 +102,11 @@ const Index = () => {
           </div>
           
           <div className="text-center mt-12">
-            <Link to="#features">
+            <a href="#features">
               <Button className="bg-commonBlue hover:bg-commonBlue/90">
                 Learn More About Us <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
       </section>

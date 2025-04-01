@@ -1,6 +1,5 @@
 
 import React from "react";
-import { HandshakeIcon } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
@@ -27,7 +26,7 @@ const Partnership = () => {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 items-center">
             <div className="lg:col-span-2 flex justify-center">
               <AnimatedSection animation="fade-in-left">
-                <div className="bg-white p-6 rounded-xl shadow-sm max-w-[250px]">
+                <div className="bg-white p-6 rounded-xl shadow-sm max-w-[250px] transition-transform hover:scale-105 duration-300">
                   <img 
                     src="https://www.setmycompany.com/assets/img/logo.png" 
                     alt="Setmycompany logo" 
@@ -81,12 +80,12 @@ const Partnership = () => {
                     target="_blank" 
                     rel="noopener noreferrer"
                   >
-                    <Button variant="outline" className="border-commonBlue/20 text-commonBlue hover:bg-commonBlue/10">
+                    <Button variant="outline" className="border-commonBlue/20 text-commonBlue hover:bg-commonBlue/10 transition-all duration-300">
                       Learn More
                     </Button>
                   </a>
                   <Link to="/contact">
-                    <Button className="bg-commonGreen hover:bg-commonGreen/90">
+                    <Button className="bg-commonGreen hover:bg-commonGreen/90 transition-all duration-300">
                       Inquire About Benefits
                     </Button>
                   </Link>
