@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { CalendarIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -66,8 +65,8 @@ const BookingDialog = ({ trigger, className }: BookingDialogProps) => {
       time,
       notes,
       submittedAt: new Date().toISOString(),
-      recipientEmail: "ca.jai22@gmail.com",
-      subject: "New Tour Booking Request - Common Desk"
+      _subject: "New Tour Booking Request - Common Desk",
+      _captcha: "false"
     };
     
     setIsSubmitting(true);
@@ -77,18 +76,17 @@ const BookingDialog = ({ trigger, className }: BookingDialogProps) => {
       const response = await fetch('https://formsubmit.co/ajax/ca.jai22@gmail.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...bookingData,
-          _subject: "New Tour Booking Request - Common Desk"
-        })
+        body: JSON.stringify(bookingData)
       });
       
       if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        console.error("Form submission error:", errorData);
         throw new Error('Failed to submit form');
       }
       
-      // Log the data that was sent
-      console.log("Booking data sent:", bookingData);
+      // Log the successful submission
+      console.log("Booking data sent successfully:", bookingData);
       
       // Show success message
       toast.success(`Your tour is scheduled for ${formattedDate} at ${time}. We'll contact you shortly to confirm.`);

@@ -37,8 +37,8 @@ const Contact = () => {
     const contactData = {
       ...formData,
       submittedAt: new Date().toISOString(),
-      recipientEmail: "ca.jai22@gmail.com",
-      subject: "New Contact Form Submission - Common Desk"
+      _subject: "New Contact Form Submission - Common Desk",
+      _captcha: "false" // Disable captcha for better user experience
     };
     
     setIsSubmitting(true);
@@ -48,18 +48,17 @@ const Contact = () => {
       const response = await fetch('https://formsubmit.co/ajax/ca.jai22@gmail.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...contactData,
-          _subject: "New Contact Form Submission - Common Desk"
-        })
+        body: JSON.stringify(contactData)
       });
       
       if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        console.error("Form submission error:", errorData);
         throw new Error('Failed to submit form');
       }
       
-      // Log the data that was sent
-      console.log("Contact data sent:", contactData);
+      // Log the successful submission
+      console.log("Contact form sent successfully:", contactData);
       
       // Show success message
       toast.success("Thank you for your message! We'll get back to you soon.");
