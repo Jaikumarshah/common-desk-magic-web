@@ -26,11 +26,11 @@ const Partnership = () => {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 items-center">
             <div className="lg:col-span-2 flex justify-center">
               <AnimatedSection animation="fade-in-left">
-                <div className="bg-white p-6 rounded-xl shadow-sm max-w-[250px] transition-transform hover:scale-105 duration-300">
+                <div className="bg-white p-6 rounded-xl shadow-sm max-w-[280px] transition-transform hover:scale-105 duration-300">
                   <img 
-                    src="https://www.setmycompany.com/assets/img/logo.png" 
+                    src="/lovable-uploads/2e39d505-4766-4f29-9ae2-ad6ab9224ddd.png" 
                     alt="Setmycompany logo" 
-                    className="h-16 mx-auto mb-4"
+                    className="h-20 mx-auto mb-4"
                   />
                   <div className="flex justify-center">
                     <a 
