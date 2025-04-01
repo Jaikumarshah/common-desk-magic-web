@@ -106,7 +106,7 @@ const Index = () => {
           </div>
           
           <div className="text-center mt-12">
-            <Link to="/contact">
+            <Link to="#features">
               <Button className="bg-commonBlue hover:bg-commonBlue/90">
                 Learn More About Us <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -174,27 +174,6 @@ const Index = () => {
                 </p>
               </div>
             </AnimatedSection>
-          </div>
-        </div>
-      </section>
-      
-      <section id="membership-plans" className="py-16 bg-commonLight">
-        <div className="container mx-auto px-4">
-          <AnimatedSection className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Flexible <span className="text-commonBlue">Membership Plans</span>
-            </h2>
-            <p className="text-lg text-commonGrey/80 max-w-3xl mx-auto">
-              Choose the perfect plan for your needs, whether you're a solopreneur, small team, or growing company.
-            </p>
-          </AnimatedSection>
-          
-          <div className="text-center mt-8">
-            <Link to="/contact">
-              <Button className="bg-commonBlue hover:bg-commonBlue/90">
-                View All Membership Options <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
           </div>
         </div>
       </section>
