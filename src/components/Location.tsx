@@ -1,8 +1,20 @@
 
-import { MapPin, Train, Clock, PhoneCall, Coffee, Utensils, Building } from "lucide-react";
+import { MapPin, Train, Clock, PhoneCall, Coffee, Utensils, Building, Navigation } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
+import { useEffect, useRef } from "react";
 
 const Location = () => {
+  const mapRef = useRef<HTMLIFrameElement>(null);
+
+  useEffect(() => {
+    // Add event listener to make sure the map is loaded correctly
+    if (mapRef.current) {
+      mapRef.current.onload = () => {
+        console.log("Map iframe loaded successfully");
+      };
+    }
+  }, []);
+
   return (
     <section id="location" className="section-padding bg-white relative">
       <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-commonLight to-transparent"></div>
@@ -32,14 +44,24 @@ const Location = () => {
                   <p className="text-commonGrey/80">
                     Common Desk, 271, 1st Floor, 14th Cross, CMH Road, Indiranagar, Bengaluru - 560038
                   </p>
-                  <a 
-                    href="https://maps.app.goo.gl/LVFz9kj59pLcu4hv7" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-commonBlue hover:underline mt-2 inline-block"
-                  >
-                    View on Google Maps
-                  </a>
+                  <div className="flex space-x-2 mt-2">
+                    <a 
+                      href="https://maps.app.goo.gl/sSv8wg2ZAaQ9RFrL7" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-commonBlue hover:underline inline-flex items-center"
+                    >
+                      <MapPin className="w-4 h-4 mr-1" /> Google Maps
+                    </a>
+                    <a 
+                      href="https://goo.gl/maps/dM5gHBQH1wrhqWAp9" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-commonGreen hover:underline inline-flex items-center"
+                    >
+                      <Navigation className="w-4 h-4 mr-1" /> Directions
+                    </a>
+                  </div>
                 </div>
               </div>
               
@@ -83,9 +105,10 @@ const Location = () => {
           </AnimatedSection>
           
           <AnimatedSection animation="fade-in-right">
-            <div className="aspect-video rounded-xl overflow-hidden shadow-medium">
+            <div className="aspect-video rounded-xl overflow-hidden shadow-medium relative">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248.01930195454456!2d77.63981226872994!3d12.972071582756865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17d9f55dc12d%3A0x8af901c1d4fc2e8b!2sCommon%20Desk!5e0!3m2!1sen!2sin!4v1719188675696!5m2!1sen!2sin" 
+                ref={mapRef}
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.0349661112242!2d77.63975607238057!3d12.972236399999991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17d9f55dc12d%3A0x8af901c1d4fc2e8b!2sCommon%20Desk!5e0!3m2!1sen!2sin!4v1719194151109!5m2!1sen!2sin" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
@@ -95,6 +118,9 @@ const Location = () => {
                 className="w-full h-full"
                 title="Google Maps - Common Desk Location"
               ></iframe>
+              <div className="absolute top-2 right-2 bg-white px-2 py-1 rounded-md shadow-sm text-xs font-medium z-10">
+                Common Desk
+              </div>
             </div>
             <div className="mt-6 glass-card p-4 rounded-lg space-y-4">
               <h4 className="font-medium text-lg text-commonGrey">Neighborhood Highlights</h4>
