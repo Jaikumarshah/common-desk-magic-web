@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,6 +15,7 @@ const Contact = () => {
     phone: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -23,7 +25,7 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Form validation
@@ -32,16 +34,45 @@ const Contact = () => {
       return;
     }
     
-    // Simulate form submission
-    toast.success("Thank you for your message! We'll get back to you soon.");
+    // Prepare contact data
+    const contactData = {
+      ...formData,
+      submittedAt: new Date().toISOString(),
+    };
     
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    });
+    setIsSubmitting(true);
+    
+    try {
+      // Simulate API call with a delay
+      // In a real app, replace this with your actual API endpoint
+      // const response = await fetch('https://api.example.com/contact', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(contactData)
+      // });
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // Log the data that would be sent
+      console.log("Contact data to send:", contactData);
+      
+      // Show success message
+      toast.success("Thank you for your message! We'll get back to you soon.");
+      
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Error submitting contact form:", error);
+      toast.error("Something went wrong. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -167,6 +198,7 @@ const Contact = () => {
                     onChange={handleChange}
                     className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 
@@ -183,6 +215,7 @@ const Contact = () => {
                     onChange={handleChange}
                     className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 
@@ -197,6 +230,7 @@ const Contact = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
+                    disabled={isSubmitting}
                   />
                 </div>
                 
@@ -213,15 +247,45 @@ const Contact = () => {
                     className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors resize-none"
                     rows={4}
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 
                 <Button 
                   type="submit" 
                   className="w-full bg-commonBlue hover:bg-commonBlue/90 text-white flex items-center justify-center gap-2 py-6"
+                  disabled={isSubmitting}
                 >
-                  <Send className="w-4 h-4" />
-                  Send Message
+                  {isSubmitting ? (
+                    <>
+                      <svg 
+                        className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        fill="none" 
+                        viewBox="0 0 24 24"
+                      >
+                        <circle 
+                          className="opacity-25" 
+                          cx="12" 
+                          cy="12" 
+                          r="10" 
+                          stroke="currentColor" 
+                          strokeWidth="4"
+                        ></circle>
+                        <path 
+                          className="opacity-75" 
+                          fill="currentColor" 
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
+                      </svg>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4" />
+                      Send Message
+                    </>
+                  )}
                 </Button>
               </div>
             </form>

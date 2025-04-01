@@ -37,6 +37,7 @@ const BookingDialog = ({ trigger, className }: BookingDialogProps) => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [notes, setNotes] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const timeSlots = [
     "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", 
@@ -44,7 +45,7 @@ const BookingDialog = ({ trigger, className }: BookingDialogProps) => {
     "05:00 PM", "06:00 PM", "07:00 PM"
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Form validation
@@ -56,12 +57,46 @@ const BookingDialog = ({ trigger, className }: BookingDialogProps) => {
     // Format the date for display
     const formattedDate = date ? format(date, "EEEE, MMMM do, yyyy") : "";
     
-    // Submit form - in a real app, this would send the data to an API
-    toast.success(`Your tour is scheduled for ${formattedDate} at ${time}. We'll contact you shortly to confirm.`);
+    // Prepare data for submission
+    const bookingData = {
+      name,
+      email,
+      phone,
+      date: formattedDate,
+      time,
+      notes,
+      submittedAt: new Date().toISOString(),
+    };
     
-    // Reset form and close dialog
-    resetForm();
-    setIsOpen(false);
+    setIsSubmitting(true);
+    
+    try {
+      // Simulate API call with a delay
+      // In a real app, replace this with your actual API endpoint
+      // const response = await fetch('https://api.example.com/bookings', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(bookingData)
+      // });
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // Log the data that would be sent
+      console.log("Booking data to send:", bookingData);
+      
+      // Show success message
+      toast.success(`Your tour is scheduled for ${formattedDate} at ${time}. We'll contact you shortly to confirm.`);
+      
+      // Reset form and close dialog
+      resetForm();
+      setIsOpen(false);
+    } catch (error) {
+      console.error("Error submitting booking:", error);
+      toast.error("Something went wrong. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const resetForm = () => {
@@ -189,11 +224,42 @@ const BookingDialog = ({ trigger, className }: BookingDialogProps) => {
               type="button" 
               variant="outline" 
               onClick={() => setIsOpen(false)}
+              disabled={isSubmitting}
             >
               Cancel
             </Button>
-            <Button type="submit" className="bg-commonBlue hover:bg-commonBlue/90 text-white">
-              Schedule Tour
+            <Button 
+              type="submit" 
+              className="bg-commonBlue hover:bg-commonBlue/90 text-white"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? (
+                <>
+                  <svg 
+                    className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    fill="none" 
+                    viewBox="0 0 24 24"
+                  >
+                    <circle 
+                      className="opacity-25" 
+                      cx="12" 
+                      cy="12" 
+                      r="10" 
+                      stroke="currentColor" 
+                      strokeWidth="4"
+                    ></circle>
+                    <path 
+                      className="opacity-75" 
+                      fill="currentColor" 
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                  Scheduling...
+                </>
+              ) : (
+                "Schedule Tour"
+              )}
             </Button>
           </DialogFooter>
         </form>
