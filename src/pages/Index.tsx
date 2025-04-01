@@ -7,16 +7,25 @@ import Location from "@/components/Location";
 import Reviews from "@/components/Reviews";
 import Contact from "@/components/Contact";
 import { useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Coffee, Wifi, Users, Clock } from "lucide-react";
+import { Link } from "react-router-dom";
+import AnimatedSection from "@/components/AnimatedSection";
 
 const Index = () => {
   // Update page title and metadata
   useEffect(() => {
-    document.title = "Common Desk - Coworking Space in Bangalore";
+    document.title = "Common Desk – Premier Coworking Space in Bengaluru";
     
     // Set meta description
-    const metaDescription = document.querySelector('meta[name="description"]');
+    let metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "Common Desk offers modern coworking spaces in Bangalore with high-speed internet, meeting rooms, and a vibrant community.");
+      metaDescription.setAttribute("content", "Discover Common Desk, Bengaluru's leading coworking space offering professional, calm, and collaborative environments with high-speed internet, modern amenities, and complimentary beverages.");
+    } else {
+      metaDescription = document.createElement('meta');
+      metaDescription.setAttribute("name", "description");
+      metaDescription.setAttribute("content", "Discover Common Desk, Bengaluru's leading coworking space offering professional, calm, and collaborative environments with high-speed internet, modern amenities, and complimentary beverages.");
+      document.head.appendChild(metaDescription);
     }
   }, []);
 
@@ -39,7 +48,156 @@ const Index = () => {
 
   return (
     <Layout>
+      <div className="sr-only">
+        <h1>Coworking Space in Bengaluru</h1>
+      </div>
+      
       <Hero />
+      
+      <section id="why-choose-common-desk" className="py-16 bg-commonLight">
+        <div className="container mx-auto px-4">
+          <AnimatedSection className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Why Choose <span className="text-commonBlue">Common Desk</span>
+            </h2>
+            <p className="text-lg text-commonGrey/80 max-w-3xl mx-auto">
+              Experience a professional workspace designed for productivity in the heart of Bengaluru. 
+              Our strategic location offers easy access to business districts, restaurants, and public transport.
+            </p>
+          </AnimatedSection>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+            <AnimatedSection animation="fade-in-up" className="glass-card p-6 rounded-xl">
+              <div className="flex flex-col items-center text-center">
+                <div className="bg-commonBlue/10 p-4 rounded-full mb-4">
+                  <Wifi className="h-8 w-8 text-commonBlue" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Premium Location</h3>
+                <p className="text-commonGrey/80">
+                  Located in the vibrant heart of Bengaluru with excellent connectivity to tech parks and business centers.
+                </p>
+              </div>
+            </AnimatedSection>
+            
+            <AnimatedSection animation="fade-in-up" delay={200} className="glass-card p-6 rounded-xl">
+              <div className="flex flex-col items-center text-center">
+                <div className="bg-commonGreen/10 p-4 rounded-full mb-4">
+                  <Users className="h-8 w-8 text-commonGreen" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Community Focus</h3>
+                <p className="text-commonGrey/80">
+                  Join a thriving community of entrepreneurs, freelancers, and professionals in a collaborative environment.
+                </p>
+              </div>
+            </AnimatedSection>
+            
+            <AnimatedSection animation="fade-in-up" delay={400} className="glass-card p-6 rounded-xl">
+              <div className="flex flex-col items-center text-center">
+                <div className="bg-commonBlue/10 p-4 rounded-full mb-4">
+                  <Clock className="h-8 w-8 text-commonBlue" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">24/7 Access</h3>
+                <p className="text-commonGrey/80">
+                  Work on your schedule with round-the-clock access to our secure and comfortable workspace.
+                </p>
+              </div>
+            </AnimatedSection>
+          </div>
+          
+          <div className="text-center mt-12">
+            <Link to="/contact">
+              <Button className="bg-commonBlue hover:bg-commonBlue/90">
+                Learn More About Us <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+      
+      <section id="amenities" className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <AnimatedSection className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Amenities You'll <span className="text-commonGreen">Love</span>
+            </h2>
+            <p className="text-lg text-commonGrey/80 max-w-3xl mx-auto">
+              We've thought of everything to make your workday productive, comfortable, and enjoyable.
+            </p>
+          </AnimatedSection>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+            <AnimatedSection animation="fade-in-left" className="flex items-start space-x-4">
+              <div className="bg-commonGreen/10 p-3 rounded-full flex-shrink-0">
+                <Wifi className="h-6 w-6 text-commonGreen" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-2">High-Speed Internet</h3>
+                <p className="text-commonGrey/80">
+                  Enterprise-grade fiber optic internet with redundant connections ensures you're always connected at lightning speeds.
+                </p>
+              </div>
+            </AnimatedSection>
+            
+            <AnimatedSection animation="fade-in-right" className="flex items-start space-x-4">
+              <div className="bg-commonBlue/10 p-3 rounded-full flex-shrink-0">
+                <Coffee className="h-6 w-6 text-commonBlue" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-2">Complimentary Beverages</h3>
+                <p className="text-commonGrey/80">
+                  Enjoy unlimited coffee, tea, and filtered water throughout your workday to keep you refreshed and focused.
+                </p>
+              </div>
+            </AnimatedSection>
+            
+            <AnimatedSection animation="fade-in-left" delay={200} className="flex items-start space-x-4">
+              <div className="bg-commonBlue/10 p-3 rounded-full flex-shrink-0">
+                <Users className="h-6 w-6 text-commonBlue" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-2">Well-Designed Meeting Rooms</h3>
+                <p className="text-commonGrey/80">
+                  Professional meeting spaces equipped with the latest technology for presentations and client meetings.
+                </p>
+              </div>
+            </AnimatedSection>
+            
+            <AnimatedSection animation="fade-in-right" delay={200} className="flex items-start space-x-4">
+              <div className="bg-commonGreen/10 p-3 rounded-full flex-shrink-0">
+                <Clock className="h-6 w-6 text-commonGreen" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-2">Flexible Hours</h3>
+                <p className="text-commonGrey/80">
+                  Access your workspace when you need it, with extended operating hours to accommodate your schedule.
+                </p>
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+      
+      <section id="membership-plans" className="py-16 bg-commonLight">
+        <div className="container mx-auto px-4">
+          <AnimatedSection className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Flexible <span className="text-commonBlue">Membership Plans</span>
+            </h2>
+            <p className="text-lg text-commonGrey/80 max-w-3xl mx-auto">
+              Choose the perfect plan for your needs, whether you're a solopreneur, small team, or growing company.
+            </p>
+          </AnimatedSection>
+          
+          <div className="text-center mt-8">
+            <Link to="/contact">
+              <Button className="bg-commonBlue hover:bg-commonBlue/90">
+                View All Membership Options <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+      
       <Features />
       <Pricing />
       <Location />

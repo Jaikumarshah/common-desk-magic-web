@@ -88,7 +88,7 @@ const Contact = () => {
                   <div>
                     <h4 className="text-base font-medium text-commonGrey">Call Us</h4>
                     <a href="tel:+919986888639" className="text-commonBlue hover:underline">
-                      +91 99868 88639
+                      +919986888639
                     </a>
                   </div>
                 </div>
@@ -194,7 +194,7 @@ const Contact = () => {
                   <Input
                     id="phone"
                     name="phone"
-                    placeholder="+91 99868 88639"
+                    placeholder="+919986888639"
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
