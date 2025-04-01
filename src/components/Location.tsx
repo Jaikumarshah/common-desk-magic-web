@@ -46,7 +46,7 @@ const Location = () => {
                   </p>
                   <div className="flex space-x-2 mt-2">
                     <a 
-                      href="https://maps.app.goo.gl/sSv8wg2ZAaQ9RFrL7" 
+                      href="https://maps.app.goo.gl/eF4SP482iznX6kQa8" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-commonBlue hover:underline inline-flex items-center"
@@ -54,7 +54,7 @@ const Location = () => {
                       <MapPin className="w-4 h-4 mr-1" /> Google Maps
                     </a>
                     <a 
-                      href="https://goo.gl/maps/dM5gHBQH1wrhqWAp9" 
+                      href="https://maps.app.goo.gl/eF4SP482iznX6kQa8" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-commonGreen hover:underline inline-flex items-center"
@@ -108,7 +108,7 @@ const Location = () => {
             <div className="aspect-video rounded-xl overflow-hidden shadow-medium relative">
               <iframe 
                 ref={mapRef}
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.0349661112242!2d77.63975607238057!3d12.972236399999991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17d9f55dc12d%3A0x8af901c1d4fc2e8b!2sCommon%20Desk!5e0!3m2!1sen!2sin!4v1719194151109!5m2!1sen!2sin" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.03496589284117!2d77.6391654!3d12.9722364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f15.1!3m3!1m2!1s0x3bae17d9f55dc12d%3A0x8af901c1d4fc2e8b!2sCommon%20Desk!5e0!3m2!1sen!2sin!4v1719196301656!5m2!1sen!2sin"
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
