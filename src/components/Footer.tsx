@@ -1,4 +1,3 @@
-
 import { ArrowUp } from "lucide-react";
 
 const Footer = () => {
@@ -105,17 +104,17 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <span className="text-commonGrey/80">
-                  <span className="font-medium text-commonGrey">Address:</span> Indiranagar, Bangalore, Karnataka, India
+                  <span className="font-medium text-commonGrey">Address:</span> 271, 1st Floor, 14th Cross, CMH Road, Indiranagar, Bengaluru - 560038
                 </span>
               </li>
               <li>
-                <a href="mailto:info@commondesk.in" className="text-commonGrey/80 hover:text-commonBlue transition-colors">
-                  <span className="font-medium text-commonGrey">Email:</span> info@commondesk.in
+                <a href="mailto:nudge@commondesk.in" className="text-commonGrey/80 hover:text-commonBlue transition-colors">
+                  <span className="font-medium text-commonGrey">Email:</span> nudge@commondesk.in
                 </a>
               </li>
               <li>
-                <a href="tel:+919876543210" className="text-commonGrey/80 hover:text-commonBlue transition-colors">
-                  <span className="font-medium text-commonGrey">Phone:</span> +91 98765 43210
+                <a href="tel:+919986888639" className="text-commonGrey/80 hover:text-commonBlue transition-colors">
+                  <span className="font-medium text-commonGrey">Phone:</span> +91 9986888639
                 </a>
               </li>
               <li className="text-commonGrey/80">

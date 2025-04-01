@@ -30,7 +30,7 @@ const Location = () => {
                 <div>
                   <h3 className="text-xl font-medium mb-2">Our Address</h3>
                   <p className="text-commonGrey/80">
-                    Common Desk, 2nd Floor, No. 826, 100 Feet Road, HAL 2nd Stage, Indiranagar, Bengaluru, Karnataka 560038
+                    Common Desk, 271, 1st Floor, 14th Cross, CMH Road, Indiranagar, Bengaluru - 560038
                   </p>
                   <a 
                     href="https://maps.app.goo.gl/LVFz9kj59pLcu4hv7" 
@@ -74,7 +74,7 @@ const Location = () => {
                 <div>
                   <h3 className="text-xl font-medium mb-2">Contact</h3>
                   <p className="text-commonGrey/80">
-                    Have questions? Reach out to us at nudge@commondesk.in or call us at +91 99868 88639.
+                    Have questions? Reach out to us at nudge@commondesk.in or call us at +91 9986888639.
                   </p>
                 </div>
               </div>
