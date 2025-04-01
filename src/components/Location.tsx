@@ -1,16 +1,18 @@
 
-import { MapPin, Train, Clock, PhoneCall, Coffee, Utensils, Building, Navigation } from "lucide-react";
+import { MapPin, Train, Clock, PhoneCall, Coffee, Utensils, Building, Navigation, ExternalLink } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Location = () => {
   const mapRef = useRef<HTMLIFrameElement>(null);
+  const [mapLoaded, setMapLoaded] = useState(false);
 
   useEffect(() => {
     // Add event listener to make sure the map is loaded correctly
     if (mapRef.current) {
       mapRef.current.onload = () => {
         console.log("Map iframe loaded successfully");
+        setMapLoaded(true);
       };
     }
   }, []);
@@ -44,22 +46,22 @@ const Location = () => {
                   <p className="text-commonGrey/80">
                     Common Desk, 271, 1st Floor, 14th Cross, CMH Road, Indiranagar, Bengaluru - 560038
                   </p>
-                  <div className="flex space-x-2 mt-2">
+                  <div className="flex flex-wrap gap-3 mt-3">
                     <a 
                       href="https://maps.app.goo.gl/eF4SP482iznX6kQa8" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-commonBlue hover:underline inline-flex items-center"
+                      className="text-commonBlue hover:underline inline-flex items-center bg-commonBlue/5 px-3 py-1.5 rounded-full transition-all hover:bg-commonBlue/10"
                     >
-                      <MapPin className="w-4 h-4 mr-1" /> Google Maps
+                      <MapPin className="w-4 h-4 mr-1.5" /> Google Maps
                     </a>
                     <a 
                       href="https://maps.app.goo.gl/eF4SP482iznX6kQa8" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-commonGreen hover:underline inline-flex items-center"
+                      className="text-commonGreen hover:underline inline-flex items-center bg-commonGreen/5 px-3 py-1.5 rounded-full transition-all hover:bg-commonGreen/10"
                     >
-                      <Navigation className="w-4 h-4 mr-1" /> Directions
+                      <Navigation className="w-4 h-4 mr-1.5" /> Directions
                     </a>
                   </div>
                 </div>
@@ -105,23 +107,55 @@ const Location = () => {
           </AnimatedSection>
           
           <AnimatedSection animation="fade-in-right">
-            <div className="aspect-video rounded-xl overflow-hidden shadow-medium relative">
-              <iframe 
-                ref={mapRef}
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.03496589284117!2d77.6391654!3d12.9722364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f15.1!3m3!1m2!1s0x3bae17d9f55dc12d%3A0x8af901c1d4fc2e8b!2sCommon%20Desk!5e0!3m2!1sen!2sin!4v1719196301656!5m2!1sen!2sin"
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen 
-                loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
-                className="w-full h-full"
-                title="Google Maps - Common Desk Location"
-              ></iframe>
-              <div className="absolute top-2 right-2 bg-white px-2 py-1 rounded-md shadow-sm text-xs font-medium z-10">
-                Common Desk
+            <div className="rounded-xl overflow-hidden shadow-lg relative">
+              <div className="aspect-video bg-gray-100 flex items-center justify-center">
+                {!mapLoaded && (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-100 z-10">
+                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-commonBlue mb-4"></div>
+                    <p className="text-commonGrey">Loading map...</p>
+                  </div>
+                )}
+                <iframe 
+                  ref={mapRef}
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.03496589284117!2d77.6391654!3d12.9722364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f15.1!3m3!1m2!1s0x3bae17d9f55dc12d%3A0x8af901c1d4fc2e8b!2sCommon%20Desk!5e0!3m2!1sen!2sin!4v1719196301656!5m2!1sen!2sin"
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-full absolute inset-0"
+                  title="Google Maps - Common Desk Location"
+                ></iframe>
+              </div>
+              
+              <div className="absolute top-3 right-3 z-20">
+                <div className="bg-white px-3 py-1.5 rounded-md shadow-md text-sm font-medium flex items-center">
+                  <img 
+                    src="/lovable-uploads/44d21ec1-4526-40b7-843c-f5eb34817c9f.png" 
+                    alt="Common Desk Logo" 
+                    className="w-5 h-5 mr-2" 
+                  />
+                  Common Desk
+                </div>
+              </div>
+              
+              {/* Fallback link in case map doesn't load properly */}
+              <div className="p-3 bg-white border-t border-gray-100 flex justify-between items-center">
+                <p className="text-sm text-commonGrey/80">
+                  <MapPin className="w-4 h-4 inline-block mr-1" /> Indiranagar, Bengaluru
+                </p>
+                <a 
+                  href="https://maps.app.goo.gl/eF4SP482iznX6kQa8" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-sm text-commonBlue flex items-center hover:underline"
+                >
+                  View Larger Map <ExternalLink className="w-3.5 h-3.5 ml-1" />
+                </a>
               </div>
             </div>
+            
             <div className="mt-6 glass-card p-4 rounded-lg space-y-4">
               <h4 className="font-medium text-lg text-commonGrey">Neighborhood Highlights</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -145,6 +179,37 @@ const Location = () => {
             </div>
           </AnimatedSection>
         </div>
+        
+        {/* Static image fallback if the map is still problematic */}
+        <AnimatedSection animation="fade-in-up" className="mt-16 text-center">
+          <h3 className="text-xl font-medium mb-6">Finding us is easy</h3>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <div className="bg-commonBlue/5 p-4 rounded-lg max-w-sm">
+              <h4 className="font-medium text-commonBlue mb-2">From Indiranagar Metro</h4>
+              <p className="text-commonGrey/80 text-sm mb-3">400m walk (5 mins) → Head east on CMH Road → Turn right onto 14th Cross → Find us on your left</p>
+              <a 
+                href="https://maps.app.goo.gl/eF4SP482iznX6kQa8" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-commonBlue text-sm hover:underline inline-flex items-center"
+              >
+                <Navigation className="w-3.5 h-3.5 mr-1" /> Get directions
+              </a>
+            </div>
+            <div className="bg-commonGreen/5 p-4 rounded-lg max-w-sm">
+              <h4 className="font-medium text-commonGreen mb-2">From Old Airport Road</h4>
+              <p className="text-commonGrey/80 text-sm mb-3">Turn onto 100 Feet Road → Continue to CMH Road → Turn onto 14th Cross → Find us on your right</p>
+              <a 
+                href="https://maps.app.goo.gl/eF4SP482iznX6kQa8" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-commonGreen text-sm hover:underline inline-flex items-center"
+              >
+                <MapPin className="w-3.5 h-3.5 mr-1" /> View on map
+              </a>
+            </div>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   );
