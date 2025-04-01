@@ -85,7 +85,7 @@ const Location = () => {
           <AnimatedSection animation="fade-in-right">
             <div className="aspect-video rounded-xl overflow-hidden shadow-medium">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.942129341869!2d77.63841397486085!3d12.971869587363053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17d9f55dd55f%3A0x8af901c1d4fc2e8b!2sCommon%20Desk!5e0!3m2!1sen!2sin!4v1718537012081!5m2!1sen!2sin" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.9421293418703!2d77.63841397580356!3d12.971869587363053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17d9f55dd55f%3A0x8af901c1d4fc2e8b!2sCommon%20Desk!5e0!3m2!1sen!2sin!4v1718962057225!5m2!1sen!2sin" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
