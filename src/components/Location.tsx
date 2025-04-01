@@ -2,10 +2,12 @@
 import { MapPin, Train, Clock, PhoneCall, Coffee, Utensils, Building, Navigation, ExternalLink } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import { useEffect, useRef, useState } from "react";
+import { Button } from "./ui/button";
 
 const Location = () => {
   const mapRef = useRef<HTMLIFrameElement>(null);
   const [mapLoaded, setMapLoaded] = useState(false);
+  const mapLink = "https://maps.app.goo.gl/eF4SP482iznX6kQa8";
 
   useEffect(() => {
     // Add event listener to make sure the map is loaded correctly
@@ -16,6 +18,10 @@ const Location = () => {
       };
     }
   }, []);
+
+  const openGoogleMaps = () => {
+    window.open(mapLink, '_blank');
+  };
 
   return (
     <section id="location" className="section-padding bg-white relative">
@@ -43,20 +49,20 @@ const Location = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-medium mb-2">Our Address</h3>
-                  <p className="text-commonGrey/80">
-                    Common Desk, 271, 1st Floor, 14th Cross, CMH Road, Indiranagar, Bengaluru - 560038
-                  </p>
+                  <div className="p-4 bg-commonLight rounded-lg border border-commonBlue/20 mb-3">
+                    <p className="text-commonGrey/90 font-medium">
+                      Common Desk, 271, 1st Floor, 14th Cross, CMH Road, Indiranagar, Bengaluru - 560038
+                    </p>
+                  </div>
                   <div className="flex flex-wrap gap-3 mt-3">
-                    <a 
-                      href="https://maps.app.goo.gl/eF4SP482iznX6kQa8" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-commonBlue hover:underline inline-flex items-center bg-commonBlue/5 px-3 py-1.5 rounded-full transition-all hover:bg-commonBlue/10"
+                    <Button 
+                      onClick={openGoogleMaps}
+                      className="bg-commonBlue hover:bg-commonBlue/90 transition-all duration-300"
                     >
-                      <MapPin className="w-4 h-4 mr-1.5" /> Google Maps
-                    </a>
+                      <MapPin className="w-4 h-4 mr-1.5" /> Common Desk
+                    </Button>
                     <a 
-                      href="https://maps.app.goo.gl/eF4SP482iznX6kQa8" 
+                      href={mapLink} 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-commonGreen hover:underline inline-flex items-center bg-commonGreen/5 px-3 py-1.5 rounded-full transition-all hover:bg-commonGreen/10"
@@ -130,14 +136,18 @@ const Location = () => {
               </div>
               
               <div className="absolute top-3 right-3 z-20">
-                <div className="bg-white px-3 py-1.5 rounded-md shadow-md text-sm font-medium flex items-center">
+                <Button 
+                  onClick={openGoogleMaps}
+                  className="bg-white text-commonBlue hover:bg-commonBlue hover:text-white px-3 py-1.5 rounded-md shadow-md text-sm font-medium flex items-center transition-all duration-300"
+                >
                   <img 
                     src="/lovable-uploads/44d21ec1-4526-40b7-843c-f5eb34817c9f.png" 
                     alt="Common Desk Logo" 
                     className="w-5 h-5 mr-2" 
                   />
                   Common Desk
-                </div>
+                  <ExternalLink className="w-3.5 h-3.5 ml-2" />
+                </Button>
               </div>
               
               {/* Fallback link in case map doesn't load properly */}
@@ -146,7 +156,7 @@ const Location = () => {
                   <MapPin className="w-4 h-4 inline-block mr-1" /> Indiranagar, Bengaluru
                 </p>
                 <a 
-                  href="https://maps.app.goo.gl/eF4SP482iznX6kQa8" 
+                  href={mapLink} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-sm text-commonBlue flex items-center hover:underline"
@@ -188,7 +198,7 @@ const Location = () => {
               <h4 className="font-medium text-commonBlue mb-2">From Indiranagar Metro</h4>
               <p className="text-commonGrey/80 text-sm mb-3">400m walk (5 mins) → Head east on CMH Road → Turn right onto 14th Cross → Find us on your left</p>
               <a 
-                href="https://maps.app.goo.gl/eF4SP482iznX6kQa8" 
+                href={mapLink} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-commonBlue text-sm hover:underline inline-flex items-center"
@@ -200,7 +210,7 @@ const Location = () => {
               <h4 className="font-medium text-commonGreen mb-2">From Old Airport Road</h4>
               <p className="text-commonGrey/80 text-sm mb-3">Turn onto 100 Feet Road → Continue to CMH Road → Turn onto 14th Cross → Find us on your right</p>
               <a 
-                href="https://maps.app.goo.gl/eF4SP482iznX6kQa8" 
+                href={mapLink} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-commonGreen text-sm hover:underline inline-flex items-center"
