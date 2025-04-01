@@ -50,7 +50,7 @@ const Features = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Designed for <span className="text-commonBlue">Productivity</span> & <span className="text-commonGreen">Comfort</span>
           </h2>
-          <p className="text-lg text-commonGrey/80 max-w-2xl mx-auto">
+          <p className="text-lg text-commonGreyText max-w-2xl mx-auto">
             Experience a workspace that combines functionality with comfort, featuring amenities that enhance your work life and well-being.
           </p>
         </AnimatedSection>
@@ -69,7 +69,7 @@ const Features = () => {
               <h3 className="text-xl font-semibold mb-3 text-commonGrey">
                 {feature.title}
               </h3>
-              <p className="text-commonGrey/80">
+              <p className="text-commonGreyText">
                 {feature.description}
               </p>
             </AnimatedSection>

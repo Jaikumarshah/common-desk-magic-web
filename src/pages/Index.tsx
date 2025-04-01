@@ -61,7 +61,7 @@ const Index = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Why Choose <span className="text-commonBlue">Common Desk</span>
             </h2>
-            <p className="text-lg text-commonGrey/80 max-w-3xl mx-auto">
+            <p className="text-lg text-commonGreyText max-w-3xl mx-auto">
               Experience a professional workspace designed for productivity in the heart of Bengaluru. 
               Our strategic location in Indiranagar offers easy access to tech parks, startups, and Bangalore's thriving business ecosystem.
             </p>
@@ -74,7 +74,7 @@ const Index = () => {
                   <MapPin className="h-8 w-8 text-commonBlue" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Premium Indiranagar Location</h3>
-                <p className="text-commonGrey/80">
+                <p className="text-commonGreyText">
                   Located in the vibrant heart of Indiranagar with excellent connectivity to tech parks in Whitefield, Electronic City, and Koramangala's startup hub.
                 </p>
               </div>
@@ -86,7 +86,7 @@ const Index = () => {
                   <Users className="h-8 w-8 text-commonGreen" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Bangalore's Professional Network</h3>
-                <p className="text-commonGrey/80">
+                <p className="text-commonGreyText">
                   Join a thriving community of Bangalore-based entrepreneurs, tech professionals, and startups in a collaborative environment.
                 </p>
               </div>
@@ -98,7 +98,7 @@ const Index = () => {
                   <Building className="h-8 w-8 text-commonBlue" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Designed for Bengaluru's Climate</h3>
-                <p className="text-commonGrey/80">
+                <p className="text-commonGreyText">
                   Our space is optimized for Bangalore's unique weather with temperature-controlled interiors and power backup for uninterrupted productivity.
                 </p>
               </div>
@@ -121,7 +121,7 @@ const Index = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Amenities You'll <span className="text-commonGreen">Love</span>
             </h2>
-            <p className="text-lg text-commonGrey/80 max-w-3xl mx-auto">
+            <p className="text-lg text-commonGreyText max-w-3xl mx-auto">
               We've thought of everything to make your workday productive, comfortable, and enjoyable.
             </p>
           </AnimatedSection>
@@ -133,7 +133,7 @@ const Index = () => {
               </div>
               <div>
                 <h3 className="text-xl font-semibold mb-2">High-Speed Internet</h3>
-                <p className="text-commonGrey/80">
+                <p className="text-commonGreyText">
                   Enterprise-grade fiber optic internet with redundant connections ensures you're always connected at lightning speeds.
                 </p>
               </div>
@@ -145,7 +145,7 @@ const Index = () => {
               </div>
               <div>
                 <h3 className="text-xl font-semibold mb-2">Complimentary Beverages</h3>
-                <p className="text-commonGrey/80">
+                <p className="text-commonGreyText">
                   Enjoy unlimited coffee, tea, and filtered water throughout your workday to keep you refreshed and focused.
                 </p>
               </div>
@@ -157,7 +157,7 @@ const Index = () => {
               </div>
               <div>
                 <h3 className="text-xl font-semibold mb-2">Well-Designed Meeting Rooms</h3>
-                <p className="text-commonGrey/80">
+                <p className="text-commonGreyText">
                   Professional meeting spaces equipped with the latest technology for presentations and client meetings.
                 </p>
               </div>
@@ -169,7 +169,7 @@ const Index = () => {
               </div>
               <div>
                 <h3 className="text-xl font-semibold mb-2">Flexible Hours</h3>
-                <p className="text-commonGrey/80">
+                <p className="text-commonGreyText">
                   Access your workspace when you need it, with extended operating hours to accommodate your schedule.
                 </p>
               </div>

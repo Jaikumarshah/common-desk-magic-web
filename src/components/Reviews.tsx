@@ -58,7 +58,7 @@ const Reviews = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             What Our <span className="text-commonBlue">Members</span> Say
           </h2>
-          <p className="text-lg text-commonGrey/80 max-w-2xl mx-auto">
+          <p className="text-lg text-commonGreyText max-w-2xl mx-auto">
             Hear from our community of professionals who have experienced the Common Desk difference.
           </p>
           <a 
@@ -84,10 +84,10 @@ const Reviews = () => {
                   <h3 className="text-lg font-medium text-commonGrey">{review.name}</h3>
                   <div className="flex items-center mt-1">
                     {renderStars(review.rating)}
-                    <span className="ml-2 text-xs text-commonGrey/60">{review.date}</span>
+                    <span className="ml-2 text-xs text-gray-500">{review.date}</span>
                   </div>
                 </div>
-                <p className="text-commonGrey/80 italic">{review.comment}</p>
+                <p className="text-commonGreyText italic">{review.comment}</p>
               </div>
             </AnimatedSection>
           ))}

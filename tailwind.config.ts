@@ -66,6 +66,7 @@ export default {
 				// Common Desk brand colors
 				commonBlue: "#3B89A8",
 				commonGrey: "#4A4A4A",
+				commonGreyText: "#5A5A5A", // New, slightly darker grey for better text contrast
 				commonGreen: "#8A9C5B",
 				commonLight: "#F9FAFB",
 				commonDark: "#1A202C",

@@ -23,7 +23,7 @@
     --secondary-foreground: 210 40% 98%;
 
     --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted-foreground: 215.4 26% 36%; /* Adjusted from 215.4 16.3% 46.9% for better contrast */
 
     --accent: 80 28% 48%;
     --accent-foreground: 222.2 47.4% 11.2%;
@@ -108,6 +108,11 @@
 
   .btn-accent {
     @apply bg-commonGreen text-white hover:bg-commonGreen/90 transition-colors duration-300;
+  }
+
+  /* Text with improved readability */
+  .text-description {
+    @apply text-gray-700; /* Darker than the commonGrey/80 for better readability */
   }
 
   /* Scrollbar styling */
