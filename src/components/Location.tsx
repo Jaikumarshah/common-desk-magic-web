@@ -1,5 +1,5 @@
 
-import { MapPin, Train, Clock, PhoneCall } from "lucide-react";
+import { MapPin, Train, Clock, PhoneCall, Coffee, Utensils, Buildings } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 
 const Location = () => {
@@ -50,7 +50,8 @@ const Location = () => {
                 <div>
                   <h3 className="text-xl font-medium mb-2">Transportation</h3>
                   <p className="text-commonGrey/80">
-                    Just 400 meters from Indiranagar Metro Station, providing easy access to all parts of Bangalore.
+                    Just 400 meters from Indiranagar Metro Station, providing easy access to all parts of Bangalore. 
+                    Only 20 minutes to MG Road and 30 minutes to major tech parks in Whitefield.
                   </p>
                 </div>
               </div>
@@ -95,10 +96,26 @@ const Location = () => {
                 title="Google Maps - Common Desk Location"
               ></iframe>
             </div>
-            <div className="mt-6 glass-card p-4 rounded-lg">
-              <p className="text-sm text-commonGrey/80">
-                <span className="font-medium text-commonGrey">Park Adjacent:</span> Enjoy a refreshing walk in the nearby park during your breaks for a change of scenery and fresh air.
-              </p>
+            <div className="mt-6 glass-card p-4 rounded-lg space-y-4">
+              <h4 className="font-medium text-lg text-commonGrey">Neighborhood Highlights</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="flex items-center space-x-2">
+                  <Coffee className="w-4 h-4 text-commonGreen" />
+                  <p className="text-sm text-commonGrey/80">Trendy cafés within walking distance</p>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Utensils className="w-4 h-4 text-commonGreen" />
+                  <p className="text-sm text-commonGrey/80">Diverse dining options nearby</p>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Buildings className="w-4 h-4 text-commonGreen" />
+                  <p className="text-sm text-commonGrey/80">Close to major business hubs</p>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <MapPin className="w-4 h-4 text-commonGreen" />
+                  <p className="text-sm text-commonGrey/80">Park adjacent for refreshing breaks</p>
+                </div>
+              </div>
             </div>
           </AnimatedSection>
         </div>

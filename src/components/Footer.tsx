@@ -1,3 +1,4 @@
+
 import { ArrowUp } from "lucide-react";
 
 const Footer = () => {
@@ -30,7 +31,7 @@ const Footer = () => {
               className="h-12 mb-6"
             />
             <p className="text-commonGrey/80 mb-6">
-              A premium co-working space designed to inspire creativity and foster collaboration.
+              Bengaluru's premium co-working space designed to inspire creativity and foster collaboration in the heart of Indiranagar.
             </p>
             <div className="flex space-x-4">
               <a 
@@ -126,7 +127,7 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4 text-commonGrey">Newsletter</h4>
             <p className="text-commonGrey/80 mb-4">
-              Subscribe to our newsletter for updates and special offers.
+              Subscribe for updates on Bangalore workspace trends and special offers.
             </p>
             <form className="flex">
               <input
@@ -141,6 +142,20 @@ const Footer = () => {
                 Subscribe
               </button>
             </form>
+            
+            <div className="mt-6">
+              <h5 className="text-sm font-medium mb-2 text-commonGrey">Our Partners</h5>
+              <div className="flex items-center space-x-3">
+                <a 
+                  href="https://setmycompany.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-commonBlue hover:underline text-sm"
+                >
+                  Setmycompany
+                </a>
+              </div>
+            </div>
           </div>
         </div>
         

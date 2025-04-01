@@ -6,9 +6,10 @@ import Pricing from "@/components/Pricing";
 import Location from "@/components/Location";
 import Reviews from "@/components/Reviews";
 import Contact from "@/components/Contact";
+import Partnership from "@/components/Partnership";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Coffee, Wifi, Users, Clock } from "lucide-react";
+import { ArrowRight, Coffee, Wifi, Users, Clock, Building, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import AnimatedSection from "@/components/AnimatedSection";
 
@@ -62,7 +63,7 @@ const Index = () => {
             </h2>
             <p className="text-lg text-commonGrey/80 max-w-3xl mx-auto">
               Experience a professional workspace designed for productivity in the heart of Bengaluru. 
-              Our strategic location offers easy access to business districts, restaurants, and public transport.
+              Our strategic location in Indiranagar offers easy access to tech parks, startups, and Bangalore's thriving business ecosystem.
             </p>
           </AnimatedSection>
           
@@ -70,11 +71,11 @@ const Index = () => {
             <AnimatedSection animation="fade-in-up" className="glass-card p-6 rounded-xl">
               <div className="flex flex-col items-center text-center">
                 <div className="bg-commonBlue/10 p-4 rounded-full mb-4">
-                  <Wifi className="h-8 w-8 text-commonBlue" />
+                  <MapPin className="h-8 w-8 text-commonBlue" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">Premium Location</h3>
+                <h3 className="text-xl font-semibold mb-3">Premium Indiranagar Location</h3>
                 <p className="text-commonGrey/80">
-                  Located in the vibrant heart of Bengaluru with excellent connectivity to tech parks and business centers.
+                  Located in the vibrant heart of Indiranagar with excellent connectivity to tech parks in Whitefield, Electronic City, and Koramangala's startup hub.
                 </p>
               </div>
             </AnimatedSection>
@@ -84,9 +85,9 @@ const Index = () => {
                 <div className="bg-commonGreen/10 p-4 rounded-full mb-4">
                   <Users className="h-8 w-8 text-commonGreen" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">Community Focus</h3>
+                <h3 className="text-xl font-semibold mb-3">Bangalore's Professional Network</h3>
                 <p className="text-commonGrey/80">
-                  Join a thriving community of entrepreneurs, freelancers, and professionals in a collaborative environment.
+                  Join a thriving community of Bangalore-based entrepreneurs, tech professionals, and startups in a collaborative environment.
                 </p>
               </div>
             </AnimatedSection>
@@ -94,11 +95,11 @@ const Index = () => {
             <AnimatedSection animation="fade-in-up" delay={400} className="glass-card p-6 rounded-xl">
               <div className="flex flex-col items-center text-center">
                 <div className="bg-commonBlue/10 p-4 rounded-full mb-4">
-                  <Clock className="h-8 w-8 text-commonBlue" />
+                  <Building className="h-8 w-8 text-commonBlue" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">24/7 Access</h3>
+                <h3 className="text-xl font-semibold mb-3">Designed for Bengaluru's Climate</h3>
                 <p className="text-commonGrey/80">
-                  Work on your schedule with round-the-clock access to our secure and comfortable workspace.
+                  Our space is optimized for Bangalore's unique weather with temperature-controlled interiors and power backup for uninterrupted productivity.
                 </p>
               </div>
             </AnimatedSection>
@@ -199,6 +200,7 @@ const Index = () => {
       </section>
       
       <Features />
+      <Partnership />
       <Pricing />
       <Location />
       <Reviews />
