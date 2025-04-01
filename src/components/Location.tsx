@@ -1,5 +1,5 @@
 
-import { MapPin, Train, Clock, PhoneCall, Coffee, Utensils, Buildings } from "lucide-react";
+import { MapPin, Train, Clock, PhoneCall, Coffee, Utensils, Building } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 
 const Location = () => {
@@ -108,7 +108,7 @@ const Location = () => {
                   <p className="text-sm text-commonGrey/80">Diverse dining options nearby</p>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Buildings className="w-4 h-4 text-commonGreen" />
+                  <Building className="w-4 h-4 text-commonGreen" />
                   <p className="text-sm text-commonGrey/80">Close to major business hubs</p>
                 </div>
                 <div className="flex items-center space-x-2">
