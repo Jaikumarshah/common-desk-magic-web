@@ -66,24 +66,30 @@ const BookingDialog = ({ trigger, className }: BookingDialogProps) => {
       time,
       notes,
       submittedAt: new Date().toISOString(),
+      recipientEmail: "ca.jai22@gmail.com",
+      subject: "New Tour Booking Request - Common Desk"
     };
     
     setIsSubmitting(true);
     
     try {
-      // Simulate API call with a delay
-      // In a real app, replace this with your actual API endpoint
-      // const response = await fetch('https://api.example.com/bookings', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(bookingData)
-      // });
+      // Send data using Email JS or similar service
+      // This is using a direct API endpoint example
+      const response = await fetch('https://formsubmit.co/ajax/ca.jai22@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...bookingData,
+          _subject: "New Tour Booking Request - Common Desk"
+        })
+      });
       
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
       
-      // Log the data that would be sent
-      console.log("Booking data to send:", bookingData);
+      // Log the data that was sent
+      console.log("Booking data sent:", bookingData);
       
       // Show success message
       toast.success(`Your tour is scheduled for ${formattedDate} at ${time}. We'll contact you shortly to confirm.`);
@@ -93,7 +99,7 @@ const BookingDialog = ({ trigger, className }: BookingDialogProps) => {
       setIsOpen(false);
     } catch (error) {
       console.error("Error submitting booking:", error);
-      toast.error("Something went wrong. Please try again later.");
+      toast.error("Something went wrong. Please try again later or contact us directly.");
     } finally {
       setIsSubmitting(false);
     }
