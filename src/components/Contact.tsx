@@ -16,12 +16,38 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const WEBHOOK_URL = "https://prod-cb.snap.pe/chatbot/rest/v1/WPFormLead?client_name=CommonDesk&client_key=efcc3b00-e5ac-4ca6-9d7e-a511b6298e76&source=website";
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
+  };
+
+  const sendToWebhook = async (data: any) => {
+    try {
+      // Convert data to URL-encoded format
+      const formBody = new URLSearchParams();
+      Object.keys(data).forEach(key => {
+        formBody.append(key, data[key]);
+      });
+
+      const response = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formBody.toString()
+      });
+
+      console.log("Webhook response status:", response.status);
+      return response.ok;
+    } catch (error) {
+      console.error("Webhook error:", error);
+      return false;
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -33,32 +59,42 @@ const Contact = () => {
       return;
     }
     
-    // Prepare contact data
-    const contactData = {
-      ...formData,
-      submittedAt: new Date().toISOString(),
-      _subject: "New Contact Form Submission - Common Desk",
-      _captcha: "false" // Disable captcha for better user experience
-    };
-    
     setIsSubmitting(true);
     
     try {
-      // Send data using FormSubmit.co service
+      // Prepare data for webhook
+      const webhookData = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || '',
+        message: formData.message,
+        form_type: 'contact',
+        timestamp: new Date().toISOString(),
+      };
+
+      // Send to webhook first
+      const webhookSuccess = await sendToWebhook(webhookData);
+      
+      // Prepare contact data for FormSubmit as backup
+      const contactData = {
+        ...formData,
+        submittedAt: new Date().toISOString(),
+        _subject: "New Contact Form Submission - Common Desk",
+        _captcha: "false"
+      };
+      
+      // Send data using FormSubmit.co service as backup
       const response = await fetch('https://formsubmit.co/ajax/ca.jai22@gmail.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(contactData)
       });
       
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        console.error("Form submission error:", errorData);
-        throw new Error('Failed to submit form');
+      if (!response.ok && !webhookSuccess) {
+        throw new Error('Both webhook and backup failed');
       }
       
-      // Log the successful submission
-      console.log("Contact form sent successfully:", contactData);
+      console.log("Contact form sent successfully:", { webhookSuccess, formSubmitSuccess: response.ok });
       
       // Show success message
       toast.success("Thank you for your message! We'll get back to you soon.");

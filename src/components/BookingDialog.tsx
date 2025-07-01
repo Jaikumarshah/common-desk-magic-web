@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { CalendarIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -39,11 +38,37 @@ const BookingDialog = ({ trigger, className }: BookingDialogProps) => {
   const [notes, setNotes] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const WEBHOOK_URL = "https://prod-cb.snap.pe/chatbot/rest/v1/WPFormLead?client_name=CommonDesk&client_key=efcc3b00-e5ac-4ca6-9d7e-a511b6298e76&source=website";
+
   const timeSlots = [
     "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", 
     "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", 
     "05:00 PM", "06:00 PM", "07:00 PM"
   ];
+
+  const sendToWebhook = async (data: any) => {
+    try {
+      // Convert data to URL-encoded format
+      const formBody = new URLSearchParams();
+      Object.keys(data).forEach(key => {
+        formBody.append(key, data[key]);
+      });
+
+      const response = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formBody.toString()
+      });
+
+      console.log("Webhook response status:", response.status);
+      return response.ok;
+    } catch (error) {
+      console.error("Webhook error:", error);
+      return false;
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -57,37 +82,49 @@ const BookingDialog = ({ trigger, className }: BookingDialogProps) => {
     // Format the date for display
     const formattedDate = date ? format(date, "EEEE, MMMM do, yyyy") : "";
     
-    // Prepare data for submission
-    const bookingData = {
-      name,
-      email,
-      phone,
-      date: formattedDate,
-      time,
-      notes,
-      submittedAt: new Date().toISOString(),
-      _subject: "New Tour Booking Request - Common Desk",
-      _captcha: "false"
-    };
-    
     setIsSubmitting(true);
     
     try {
-      // Send data using FormSubmit.co service
+      // Prepare data for webhook
+      const webhookData = {
+        name,
+        email,
+        phone: phone || '',
+        date: formattedDate,
+        time,
+        notes: notes || '',
+        form_type: 'booking',
+        timestamp: new Date().toISOString(),
+      };
+
+      // Send to webhook first
+      const webhookSuccess = await sendToWebhook(webhookData);
+      
+      // Prepare data for FormSubmit as backup
+      const bookingData = {
+        name,
+        email,
+        phone,
+        date: formattedDate,
+        time,
+        notes,
+        submittedAt: new Date().toISOString(),
+        _subject: "New Tour Booking Request - Common Desk",
+        _captcha: "false"
+      };
+      
+      // Send data using FormSubmit.co service as backup
       const response = await fetch('https://formsubmit.co/ajax/ca.jai22@gmail.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(bookingData)
       });
       
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        console.error("Form submission error:", errorData);
-        throw new Error('Failed to submit form');
+      if (!response.ok && !webhookSuccess) {
+        throw new Error('Both webhook and backup failed');
       }
       
-      // Log the successful submission
-      console.log("Booking data sent successfully:", bookingData);
+      console.log("Booking data sent successfully:", { webhookSuccess, formSubmitSuccess: response.ok });
       
       // Show success message
       toast.success(`Your tour is scheduled for ${formattedDate} at ${time}. We'll contact you shortly to confirm.`);
