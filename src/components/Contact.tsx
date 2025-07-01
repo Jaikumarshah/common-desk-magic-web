@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -147,12 +148,12 @@ const Contact = () => {
           </p>
         </AnimatedSection>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           <AnimatedSection animation="fade-in-left">
-            <div className="glass-card p-8 rounded-xl shadow-medium h-full">
+            <div className="glass-card p-8 rounded-xl shadow-medium h-full flex flex-col">
               <h3 className="text-2xl font-bold mb-6 text-commonGrey">Contact Information</h3>
               
-              <div className="space-y-6">
+              <div className="space-y-6 flex-grow">
                 <div className="flex items-center space-x-4">
                   <div className="bg-commonBlue/10 p-3 rounded-full">
                     <Mail className="w-5 h-5 text-commonBlue" />
@@ -200,7 +201,7 @@ const Contact = () => {
                 </div>
               </div>
               
-              <div className="mt-12">
+              <div className="mt-8 pt-8 border-t border-gray-200">
                 <h3 className="text-xl font-bold mb-4 text-commonGrey">Follow Us</h3>
                 <div className="flex space-x-4">
                   <a 
@@ -236,198 +237,210 @@ const Contact = () => {
           </AnimatedSection>
           
           <AnimatedSection animation="fade-in-right">
-            <form onSubmit={handleSubmit} className="glass-card p-8 rounded-xl shadow-medium">
-              <h3 className="text-2xl font-bold mb-6 text-commonGrey">Send Us a Message</h3>
-              
-              <div className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-commonGrey mb-1">
-                    Your Name *
-                  </label>
-                  <Input
-                    id="name"
-                    name="name"
-                    placeholder="John Doe"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
-                    required
-                    disabled={isSubmitting}
-                  />
-                </div>
+            <div className="glass-card p-8 rounded-xl shadow-medium h-full">
+              <form onSubmit={handleSubmit} className="h-full flex flex-col">
+                <h3 className="text-2xl font-bold mb-6 text-commonGrey">Send Us a Message</h3>
                 
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-commonGrey mb-1">
-                    Email Address *
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="john@example.com"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
-                    required
-                    disabled={isSubmitting}
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-commonGrey mb-1">
-                    Phone Number (Optional)
-                  </label>
-                  <Input
-                    id="phone"
-                    name="phone"
-                    placeholder="+919986888639"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
-                    disabled={isSubmitting}
-                  />
-                </div>
+                <div className="space-y-4 flex-grow">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium text-commonGrey mb-1">
+                        Your Name *
+                      </label>
+                      <Input
+                        id="name"
+                        name="name"
+                        placeholder="John Doe"
+                        value={formData.name}
+                        onChange={handleChange}
+                        className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
+                        required
+                        disabled={isSubmitting}
+                      />
+                    </div>
+                    
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium text-commonGrey mb-1">
+                        Email Address *
+                      </label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="john@example.com"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
+                        required
+                        disabled={isSubmitting}
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="phone" className="block text-sm font-medium text-commonGrey mb-1">
+                        Phone Number
+                      </label>
+                      <Input
+                        id="phone"
+                        name="phone"
+                        placeholder="+919986888639"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
+                        disabled={isSubmitting}
+                      />
+                    </div>
 
-                <div>
-                  <label htmlFor="teamSize" className="block text-sm font-medium text-commonGrey mb-1">
-                    Team Size
-                  </label>
-                  <Input
-                    id="teamSize"
-                    name="teamSize"
-                    placeholder="e.g., 5 people"
-                    value={formData.teamSize}
-                    onChange={handleChange}
-                    className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
-                    disabled={isSubmitting}
-                  />
-                </div>
+                    <div>
+                      <label htmlFor="teamSize" className="block text-sm font-medium text-commonGrey mb-1">
+                        Team Size
+                      </label>
+                      <Input
+                        id="teamSize"
+                        name="teamSize"
+                        placeholder="e.g., 5 people"
+                        value={formData.teamSize}
+                        onChange={handleChange}
+                        className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
+                        disabled={isSubmitting}
+                      />
+                    </div>
+                  </div>
 
-                <div>
-                  <label htmlFor="interestedIn" className="block text-sm font-medium text-commonGrey mb-1">
-                    Interested In
-                  </label>
-                  <select
-                    id="interestedIn"
-                    name="interestedIn"
-                    value={formData.interestedIn}
-                    onChange={handleChange}
-                    className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
-                    disabled={isSubmitting}
-                  >
-                    <option value="">Select an option</option>
-                    <option value="open_desk">Open Desk</option>
-                    <option value="dedicated">Dedicated Desk</option>
-                    <option value="cabin">Private Cabin</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="peopleUsingSpace" className="block text-sm font-medium text-commonGrey mb-1">
-                    How many people will use the space?
-                  </label>
-                  <select
-                    id="peopleUsingSpace"
-                    name="peopleUsingSpace"
-                    value={formData.peopleUsingSpace}
-                    onChange={handleChange}
-                    className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
-                    disabled={isSubmitting}
-                  >
-                    <option value="">Select range</option>
-                    <option value="just_me">Just me</option>
-                    <option value="1-2">1-2 people</option>
-                    <option value="3-5">3-5 people</option>
-                    <option value="6-10">6-10 people</option>
-                    <option value="more_than_10">More than 10</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="workPlaceType" className="block text-sm font-medium text-commonGrey mb-1">
-                    Work Place Type
-                  </label>
-                  <Input
-                    id="workPlaceType"
-                    name="workPlaceType"
-                    placeholder="e.g., Tech Startup, Consulting, etc."
-                    value={formData.workPlaceType}
-                    onChange={handleChange}
-                    className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
-                    disabled={isSubmitting}
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="planToMoveIn" className="block text-sm font-medium text-commonGrey mb-1">
-                    When do you plan to move in?
-                  </label>
-                  <Input
-                    id="planToMoveIn"
-                    name="planToMoveIn"
-                    placeholder="e.g., Next month, Within 2 weeks, etc."
-                    value={formData.planToMoveIn}
-                    onChange={handleChange}
-                    className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
-                    disabled={isSubmitting}
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-commonGrey mb-1">
-                    Your Message *
-                  </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    placeholder="I'm interested in learning more about Common Desk..."
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors resize-none"
-                    rows={4}
-                    required
-                    disabled={isSubmitting}
-                  />
-                </div>
-                
-                <Button 
-                  type="submit" 
-                  className="w-full bg-commonBlue hover:bg-commonBlue/90 text-white flex items-center justify-center gap-2 py-6"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <svg 
-                        className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" 
-                        xmlns="http://www.w3.org/2000/svg" 
-                        fill="none" 
-                        viewBox="0 0 24 24"
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="interestedIn" className="block text-sm font-medium text-commonGrey mb-1">
+                        Interested In
+                      </label>
+                      <select
+                        id="interestedIn"
+                        name="interestedIn"
+                        value={formData.interestedIn}
+                        onChange={handleChange}
+                        className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
+                        disabled={isSubmitting}
                       >
-                        <circle 
-                          className="opacity-25" 
-                          cx="12" 
-                          cy="12" 
-                          r="10" 
-                          stroke="currentColor" 
-                          strokeWidth="4"
-                        ></circle>
-                        <path 
-                          className="opacity-75" 
-                          fill="currentColor" 
-                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                        ></path>
-                      </svg>
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4" />
-                      Send Message
-                    </>
-                  )}
-                </Button>
-              </div>
-            </form>
+                        <option value="">Select an option</option>
+                        <option value="open_desk">Open Desk</option>
+                        <option value="dedicated">Dedicated Desk</option>
+                        <option value="cabin">Private Cabin</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label htmlFor="peopleUsingSpace" className="block text-sm font-medium text-commonGrey mb-1">
+                        People Using Space
+                      </label>
+                      <select
+                        id="peopleUsingSpace"
+                        name="peopleUsingSpace"
+                        value={formData.peopleUsingSpace}
+                        onChange={handleChange}
+                        className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
+                        disabled={isSubmitting}
+                      >
+                        <option value="">Select range</option>
+                        <option value="just_me">Just me</option>
+                        <option value="1-2">1-2 people</option>
+                        <option value="3-5">3-5 people</option>
+                        <option value="6-10">6-10 people</option>
+                        <option value="more_than_10">More than 10</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="workPlaceType" className="block text-sm font-medium text-commonGrey mb-1">
+                        Work Place Type
+                      </label>
+                      <Input
+                        id="workPlaceType"
+                        name="workPlaceType"
+                        placeholder="e.g., Tech Startup, Consulting"
+                        value={formData.workPlaceType}
+                        onChange={handleChange}
+                        className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
+                        disabled={isSubmitting}
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="planToMoveIn" className="block text-sm font-medium text-commonGrey mb-1">
+                        When to Move In
+                      </label>
+                      <Input
+                        id="planToMoveIn"
+                        name="planToMoveIn"
+                        placeholder="e.g., Next month"
+                        value={formData.planToMoveIn}
+                        onChange={handleChange}
+                        className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
+                        disabled={isSubmitting}
+                      />
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-commonGrey mb-1">
+                      Your Message *
+                    </label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      placeholder="I'm interested in learning more about Common Desk..."
+                      value={formData.message}
+                      onChange={handleChange}
+                      className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors resize-none"
+                      rows={4}
+                      required
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                </div>
+                
+                <div className="mt-6 pt-4">
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-commonBlue hover:bg-commonBlue/90 text-white flex items-center justify-center gap-2 py-4"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <svg 
+                          className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" 
+                          xmlns="http://www.w3.org/2000/svg" 
+                          fill="none" 
+                          viewBox="0 0 24 24"
+                        >
+                          <circle 
+                            className="opacity-25" 
+                            cx="12" 
+                            cy="12" 
+                            r="10" 
+                            stroke="currentColor" 
+                            strokeWidth="4"
+                          ></circle>
+                          <path 
+                            className="opacity-75" 
+                            fill="currentColor" 
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          ></path>
+                        </svg>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        Send Message
+                      </>
+                    )}
+                  </Button>
+                </div>
+              </form>
+            </div>
           </AnimatedSection>
         </div>
       </div>
