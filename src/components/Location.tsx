@@ -1,4 +1,3 @@
-
 import { MapPin, Train, Clock, PhoneCall, Coffee, Utensils, Building, Navigation, ExternalLink } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import { useEffect, useRef, useState } from "react";
@@ -7,17 +6,33 @@ import { Button } from "./ui/button";
 const Location = () => {
   const mapRef = useRef<HTMLIFrameElement>(null);
   const [mapLoaded, setMapLoaded] = useState(false);
+  const [mapError, setMapError] = useState(false);
   const mapLink = "https://maps.app.goo.gl/eF4SP482iznX6kQa8";
 
   useEffect(() => {
-    // Add event listener to make sure the map is loaded correctly
     if (mapRef.current) {
+      const timeoutId = setTimeout(() => {
+        if (!mapLoaded) {
+          console.log("Map loading timeout, showing error state");
+          setMapError(true);
+        }
+      }, 10000); // 10 second timeout
+
       mapRef.current.onload = () => {
         console.log("Map iframe loaded successfully");
         setMapLoaded(true);
+        clearTimeout(timeoutId);
       };
+
+      mapRef.current.onerror = () => {
+        console.log("Map iframe failed to load");
+        setMapError(true);
+        clearTimeout(timeoutId);
+      };
+
+      return () => clearTimeout(timeoutId);
     }
-  }, []);
+  }, [mapLoaded]);
 
   const openGoogleMaps = () => {
     window.open(mapLink, '_blank');
@@ -114,23 +129,37 @@ const Location = () => {
           
           <AnimatedSection animation="fade-in-right">
             <div className="rounded-xl overflow-hidden shadow-lg relative">
-              <div className="aspect-video bg-gray-100 flex items-center justify-center">
-                {!mapLoaded && (
+              <div className="aspect-video bg-gray-100 flex items-center justify-center relative">
+                {!mapLoaded && !mapError && (
                   <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-100 z-10">
                     <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-commonBlue mb-4"></div>
                     <p className="text-commonGrey">Loading map...</p>
                   </div>
                 )}
+                
+                {mapError && (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-100 z-10">
+                    <MapPin className="w-12 h-12 text-commonBlue mb-4" />
+                    <p className="text-commonGrey mb-4">Map temporarily unavailable</p>
+                    <Button 
+                      onClick={openGoogleMaps}
+                      className="bg-commonBlue hover:bg-commonBlue/90"
+                    >
+                      Open in Google Maps
+                    </Button>
+                  </div>
+                )}
+                
                 <iframe 
                   ref={mapRef}
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.03496589284117!2d77.6391654!3d12.9722364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f15.1!3m3!1m2!1s0x3bae17d9f55dc12d%3A0x8af901c1d4fc2e8b!2sCommon%20Desk!5e0!3m2!1sen!2sin!4v1719196301656!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.840423928842!2d77.63699707507583!3d12.972236414772708!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17d9f55dc12d%3A0x8af901c1d4fc2e8b!2sCommon%20Desk!5e0!3m2!1sen!2sin!4v1719196301656!5m2!1sen!2sin"
                   width="100%" 
                   height="100%" 
                   style={{ border: 0 }} 
                   allowFullScreen 
                   loading="lazy" 
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full h-full absolute inset-0"
+                  className={`w-full h-full absolute inset-0 ${mapError ? 'hidden' : ''}`}
                   title="Google Maps - Common Desk Location"
                 ></iframe>
               </div>
@@ -150,7 +179,6 @@ const Location = () => {
                 </Button>
               </div>
               
-              {/* Fallback link in case map doesn't load properly */}
               <div className="p-3 bg-white border-t border-gray-100 flex justify-between items-center">
                 <p className="text-sm text-commonGrey/80">
                   <MapPin className="w-4 h-4 inline-block mr-1" /> Indiranagar, Bengaluru
@@ -190,7 +218,6 @@ const Location = () => {
           </AnimatedSection>
         </div>
         
-        {/* Static image fallback if the map is still problematic */}
         <AnimatedSection animation="fade-in-up" className="mt-16 text-center">
           <h3 className="text-xl font-medium mb-6">Finding us is easy</h3>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
