@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -147,12 +148,12 @@ const Contact = () => {
           </p>
         </AnimatedSection>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-          <AnimatedSection animation="fade-in-left">
-            <div className="glass-card p-8 rounded-xl shadow-medium h-full flex flex-col">
-              <h3 className="text-2xl font-bold mb-6 text-commonGrey">Contact Information</h3>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <AnimatedSection animation="fade-in-left" className="flex">
+            <div className="glass-card p-8 rounded-xl shadow-medium w-full flex flex-col min-h-[600px]">
+              <h3 className="text-2xl font-bold mb-8 text-commonGrey">Contact Information</h3>
               
-              <div className="space-y-6 flex-grow">
+              <div className="space-y-8 flex-grow">
                 <div className="flex items-center space-x-4">
                   <div className="bg-commonBlue/10 p-3 rounded-full">
                     <Mail className="w-5 h-5 text-commonBlue" />
@@ -177,13 +178,13 @@ const Contact = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-center space-x-4">
+                <div className="flex items-start space-x-4">
                   <div className="bg-commonGrey/10 p-3 rounded-full">
                     <Calendar className="w-5 h-5 text-commonGrey" />
                   </div>
                   <div>
                     <h4 className="text-base font-medium text-commonGrey">Book a Tour</h4>
-                    <p className="text-commonGrey/80 mb-2">
+                    <p className="text-commonGrey/80 mb-3">
                       Schedule a visit to experience our workspace firsthand
                     </p>
                     <BookingDialog 
@@ -200,7 +201,7 @@ const Contact = () => {
                 </div>
               </div>
               
-              <div className="mt-8 pt-8 border-t border-gray-200">
+              <div className="mt-auto pt-8 border-t border-gray-200">
                 <h3 className="text-xl font-bold mb-4 text-commonGrey">Follow Us</h3>
                 <div className="flex space-x-4">
                   <a 
@@ -235,12 +236,12 @@ const Contact = () => {
             </div>
           </AnimatedSection>
           
-          <AnimatedSection animation="fade-in-right">
-            <div className="glass-card p-8 rounded-xl shadow-medium h-full">
+          <AnimatedSection animation="fade-in-right" className="flex">
+            <div className="glass-card p-8 rounded-xl shadow-medium w-full flex flex-col min-h-[600px]">
               <form onSubmit={handleSubmit} className="h-full flex flex-col">
-                <h3 className="text-2xl font-bold mb-6 text-commonGrey">Send Us a Message</h3>
+                <h3 className="text-2xl font-bold mb-8 text-commonGrey">Send Us a Message</h3>
                 
-                <div className="space-y-4 flex-grow">
+                <div className="space-y-6 flex-grow">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-commonGrey mb-1">
@@ -402,7 +403,7 @@ const Contact = () => {
                   </div>
                 </div>
                 
-                <div className="mt-6 pt-4">
+                <div className="mt-auto pt-6">
                   <Button 
                     type="submit" 
                     className="w-full bg-commonBlue hover:bg-commonBlue/90 text-white flex items-center justify-center gap-2 py-4"
