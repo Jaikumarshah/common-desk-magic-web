@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { CalendarIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -36,6 +37,11 @@ const BookingDialog = ({ trigger, className }: BookingDialogProps) => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [notes, setNotes] = useState("");
+  const [teamSize, setTeamSize] = useState("");
+  const [interestedIn, setInterestedIn] = useState("");
+  const [peopleUsingSpace, setPeopleUsingSpace] = useState("");
+  const [workPlaceType, setWorkPlaceType] = useState("");
+  const [planToMoveIn, setPlanToMoveIn] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const WEBHOOK_URL = "https://prod-cb.snap.pe/chatbot/rest/v1/WPFormLead?client_name=CommonDesk&client_key=efcc3b00-e5ac-4ca6-9d7e-a511b6298e76&source=website";
@@ -93,6 +99,11 @@ const BookingDialog = ({ trigger, className }: BookingDialogProps) => {
         date: formattedDate,
         time,
         notes: notes || '',
+        team_size: teamSize || '',
+        interested_in: interestedIn || '',
+        people_using_space: peopleUsingSpace || '',
+        work_place_type: workPlaceType || '',
+        plan_to_move_in: planToMoveIn || '',
         form_type: 'booking',
         timestamp: new Date().toISOString(),
       };
@@ -108,6 +119,11 @@ const BookingDialog = ({ trigger, className }: BookingDialogProps) => {
         date: formattedDate,
         time,
         notes,
+        teamSize,
+        interestedIn,
+        peopleUsingSpace,
+        workPlaceType,
+        planToMoveIn,
         submittedAt: new Date().toISOString(),
         _subject: "New Tour Booking Request - Common Desk",
         _captcha: "false"
@@ -147,6 +163,11 @@ const BookingDialog = ({ trigger, className }: BookingDialogProps) => {
     setEmail("");
     setPhone("");
     setNotes("");
+    setTeamSize("");
+    setInterestedIn("");
+    setPeopleUsingSpace("");
+    setWorkPlaceType("");
+    setPlanToMoveIn("");
   };
 
   return (
@@ -156,7 +177,7 @@ const BookingDialog = ({ trigger, className }: BookingDialogProps) => {
           {trigger}
         </div>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] lg:max-w-[550px]">
+      <DialogContent className="sm:max-w-[425px] lg:max-w-[600px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Book a Tour at Common Desk</DialogTitle>
           <DialogDescription>
@@ -247,6 +268,72 @@ const BookingDialog = ({ trigger, className }: BookingDialogProps) => {
                 onChange={(e) => setPhone(e.target.value)} 
               />
             </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="teamSize">Team Size</Label>
+              <Input 
+                id="teamSize" 
+                placeholder="e.g., 5 people" 
+                value={teamSize} 
+                onChange={(e) => setTeamSize(e.target.value)} 
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <Label htmlFor="interestedIn">Interested In</Label>
+              <select
+                id="interestedIn"
+                value={interestedIn}
+                onChange={(e) => setInterestedIn(e.target.value)}
+                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                <option value="">Select an option</option>
+                <option value="open_desk">Open Desk</option>
+                <option value="dedicated">Dedicated Desk</option>
+                <option value="cabin">Private Cabin</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="peopleUsingSpace">People Using Space</Label>
+              <select
+                id="peopleUsingSpace"
+                value={peopleUsingSpace}
+                onChange={(e) => setPeopleUsingSpace(e.target.value)}
+                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                <option value="">Select range</option>
+                <option value="just_me">Just me</option>
+                <option value="1-2">1-2 people</option>
+                <option value="3-5">3-5 people</option>
+                <option value="6-10">6-10 people</option>
+                <option value="more_than_10">More than 10</option>
+              </select>
+            </div>
+            
+            <div className="space-y-2">
+              <Label htmlFor="workPlaceType">Work Place Type</Label>
+              <Input 
+                id="workPlaceType" 
+                placeholder="e.g., Tech Startup, Consulting" 
+                value={workPlaceType} 
+                onChange={(e) => setWorkPlaceType(e.target.value)} 
+              />
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="planToMoveIn">When do you plan to move in?</Label>
+            <Input 
+              id="planToMoveIn" 
+              placeholder="e.g., Next month, Within 2 weeks" 
+              value={planToMoveIn} 
+              onChange={(e) => setPlanToMoveIn(e.target.value)} 
+            />
           </div>
           
           <div className="space-y-2">

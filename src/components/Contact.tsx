@@ -13,12 +13,17 @@ const Contact = () => {
     email: "",
     phone: "",
     message: "",
+    teamSize: "",
+    interestedIn: "",
+    peopleUsingSpace: "",
+    workPlaceType: "",
+    planToMoveIn: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const WEBHOOK_URL = "https://prod-cb.snap.pe/chatbot/rest/v1/WPFormLead?client_name=CommonDesk&client_key=efcc3b00-e5ac-4ca6-9d7e-a511b6298e76&source=website";
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -68,6 +73,11 @@ const Contact = () => {
         email: formData.email,
         phone: formData.phone || '',
         message: formData.message,
+        team_size: formData.teamSize || '',
+        interested_in: formData.interestedIn || '',
+        people_using_space: formData.peopleUsingSpace || '',
+        work_place_type: formData.workPlaceType || '',
+        plan_to_move_in: formData.planToMoveIn || '',
         form_type: 'contact',
         timestamp: new Date().toISOString(),
       };
@@ -105,6 +115,11 @@ const Contact = () => {
         email: "",
         phone: "",
         message: "",
+        teamSize: "",
+        interestedIn: "",
+        peopleUsingSpace: "",
+        workPlaceType: "",
+        planToMoveIn: "",
       });
     } catch (error) {
       console.error("Error submitting contact form:", error);
@@ -267,6 +282,91 @@ const Contact = () => {
                     name="phone"
                     placeholder="+919986888639"
                     value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
+                    disabled={isSubmitting}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="teamSize" className="block text-sm font-medium text-commonGrey mb-1">
+                    Team Size
+                  </label>
+                  <Input
+                    id="teamSize"
+                    name="teamSize"
+                    placeholder="e.g., 5 people"
+                    value={formData.teamSize}
+                    onChange={handleChange}
+                    className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
+                    disabled={isSubmitting}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="interestedIn" className="block text-sm font-medium text-commonGrey mb-1">
+                    Interested In
+                  </label>
+                  <select
+                    id="interestedIn"
+                    name="interestedIn"
+                    value={formData.interestedIn}
+                    onChange={handleChange}
+                    className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
+                    disabled={isSubmitting}
+                  >
+                    <option value="">Select an option</option>
+                    <option value="open_desk">Open Desk</option>
+                    <option value="dedicated">Dedicated Desk</option>
+                    <option value="cabin">Private Cabin</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="peopleUsingSpace" className="block text-sm font-medium text-commonGrey mb-1">
+                    How many people will use the space?
+                  </label>
+                  <select
+                    id="peopleUsingSpace"
+                    name="peopleUsingSpace"
+                    value={formData.peopleUsingSpace}
+                    onChange={handleChange}
+                    className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
+                    disabled={isSubmitting}
+                  >
+                    <option value="">Select range</option>
+                    <option value="just_me">Just me</option>
+                    <option value="1-2">1-2 people</option>
+                    <option value="3-5">3-5 people</option>
+                    <option value="6-10">6-10 people</option>
+                    <option value="more_than_10">More than 10</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="workPlaceType" className="block text-sm font-medium text-commonGrey mb-1">
+                    Work Place Type
+                  </label>
+                  <Input
+                    id="workPlaceType"
+                    name="workPlaceType"
+                    placeholder="e.g., Tech Startup, Consulting, etc."
+                    value={formData.workPlaceType}
+                    onChange={handleChange}
+                    className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
+                    disabled={isSubmitting}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="planToMoveIn" className="block text-sm font-medium text-commonGrey mb-1">
+                    When do you plan to move in?
+                  </label>
+                  <Input
+                    id="planToMoveIn"
+                    name="planToMoveIn"
+                    placeholder="e.g., Next month, Within 2 weeks, etc."
+                    value={formData.planToMoveIn}
                     onChange={handleChange}
                     className="w-full p-3 rounded-lg border border-gray-200 focus:border-commonBlue focus:ring-1 focus:ring-commonBlue transition-colors"
                     disabled={isSubmitting}
